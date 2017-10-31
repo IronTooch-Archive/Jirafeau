@@ -259,7 +259,8 @@ else {
     </div> </fieldset>
 
     <?php
-    if (jirafeau_has_upload_password($cfg)) {
+    if (jirafeau_has_upload_password($cfg)
+        && false === jirafeau_challenge_upload_ip($cfg['upload_ip_nopassword'], get_ip_address($cfg))) {
         ?>
     <form method="post" class="form logout">
         <input type = "hidden" name = "action" value = "logout"/>
