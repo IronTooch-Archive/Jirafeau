@@ -1108,6 +1108,21 @@ function jirafeau_challenge_upload ($cfg, $ip, $password)
         return true;
     }
 
+    // Allow if ip is in array (no password)
+    foreach ($cfg['upload_ip_nopassword'] as $i) {
+        if ($i == $ip) {
+            return true;
+        }
+        // CIDR test for IPv4 only.
+        if (strpos ($i, '/') !== false)
+        {
+            list ($subnet, $mask) = explode('/', $i);
+            if ((ip2long ($ip) & ~((1 << (32 - $mask)) - 1) ) == ip2long ($subnet)) {
+                return true;
+            }
+        }
+    }
+
     // Allow if ip is in array
     foreach ($cfg['upload_ip'] as $i) {
         if ($i == $ip) {
