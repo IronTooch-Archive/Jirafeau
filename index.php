@@ -35,8 +35,11 @@ if (has_error()) {
 require(JIRAFEAU_ROOT . 'lib/template/header.php');
 
 /* Check if user is allowed to upload. */
-// First check: Challenge by IP
-if (true === jirafeau_challenge_upload_ip($cfg['upload_ip'], get_ip_address($cfg))) {
+// First check: Challenge by IP NO PASSWORD
+if (true === jirafeau_challenge_upload_ip($cfg['upload_ip_nopassword'], get_ip_address($cfg))) {
+}
+// Second check: Challenge by IP
+elseif (true === jirafeau_challenge_upload_ip($cfg['upload_ip'], get_ip_address($cfg))) {
     // Is an upload password required?
     if (jirafeau_has_upload_password($cfg)) {
         // Logout action
