@@ -95,4 +95,5 @@ Quick walktrough:
 * Update the demo page
 * Tag the »master« with the new version
 * Push branch and tag
+* Build & push new docker image
 * Dance a little
