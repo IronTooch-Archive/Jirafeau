@@ -108,7 +108,7 @@ Installation steps:
 1. The "Terms of Service" text file changed
    * To reuse previous changes to the ToS, move the old ```/tos_text.php``` file to ```/lib/tos.local.txt``` and remove all HTML und PHP Tags, leaving a regular text file
 
-### from version 2.0.0 to 3.3.0
+### from version 2.0.0 to 3.4.0
 
 There is nothing special to do to update from/to the following versions:
 - 2.0.0 -> 3.0.0
@@ -116,6 +116,7 @@ There is nothing special to do to update from/to the following versions:
 - 3.1.0 -> 3.2.0
 - 3.2.0 -> 3.2.1
 - 3.2.1 -> 3.3.0
+- 3.3.0 -> 3.4.0
 
 ### Troubleshooting
 
