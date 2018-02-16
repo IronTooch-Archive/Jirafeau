@@ -1,5 +1,5 @@
 {
-    "NO_BROWSER_SUPPORT": "",
+    "NO_BROWSER_SUPPORT": "Votre navigateur ne supporte apparemment pas HTML5, la taille de fichier est de ",
     "PLURAL_ENDING": "s",
     "ACCESS_KO": "Accès interdit",
     "ACTION": "Action",
@@ -111,5 +111,7 @@
     "MINUTE": "minute",
     "HOUR": "heure",
     "SECOND": "seconde",
-    "LESS_1_SEC": "moins d'une seconde"
+    "LESS_1_SEC": "moins d'une seconde",
+    "MADE_WITH": "Créé avec",
+    "TOS": "Conditions d'utilisation du service"
 }
