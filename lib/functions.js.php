@@ -145,11 +145,11 @@ function show_link (reference, delete_code, crypt_key, date)
 
     // Email link
     var filename = document.getElementById('file_select').files[0].name;
-    var b = encodeURIComponent("Download file \"" + filename + "\":") + "%0D";
+    var b = encodeURIComponent("<?php echo t("DL"); ?> \"" + filename + "\":") + "%0D";
     b += encodeURIComponent(web_root + download_link_href) + "%0D";
     if (false == isEmpty(date))
     {
-        b += "%0D" + encodeURIComponent("This file will be available until " + date.format('YYYY-MM-DD hh:mm (GMT O)')) + "%0D";
+        b += "%0D" + encodeURIComponent("<?php echo t("VALID_UNTIL"); ?>: " + date.format('YYYY-MM-DD hh:mm (GMT O)')) + "%0D";
         document.getElementById('upload_link_email').href = "mailto:?body=" + b + "&subject=" + encodeURIComponent(filename);
     }
 
