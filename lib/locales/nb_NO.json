@@ -1,6 +1,6 @@
 {
-    "NO_BROWSER_SUPPORT": "",
-    "PLURAL_ENDING": "",
+    "NO_BROWSER_SUPPORT": "Det kan hende at nettleseren din ikke støtter HTML5, så største tillatte filstørrelse er ",
+    "PLURAL_ENDING": "er",
     "JI_WEB_RE": "Jirafeau, din vevfilpakkebrønn",
     "SEL_FILE": "Velg ei fil",
     "SEND": "Send",
