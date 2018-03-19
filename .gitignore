@@ -4,3 +4,4 @@ media/custom/
 var-*
 *._*
 /vendor
+.idea/
