@@ -1,10 +1,10 @@
 {
-    "NO_BROWSER_SUPPORT": "",
-    "PLURAL_ENDING": "",
+    "NO_BROWSER_SUPPORT": "Seu navegador pode não suportar HTML5, portanto, o tamanho máximo do arquivo é ",
+    "PLURAL_ENDING": "s",
     "JI_WEB_RE": "Jirafeau, o seu repositório web de arquivos",
     "SEL_FILE": "Selecione um arquivo",
     "SEND": "Enviar",
-    "UP": "Carregando...",
+    "UP": "Carregando …",
     "ONE_TIME_DL": "Download único",
     "PSW": "Senha",
     "TIME_LIM": "Limite de tempo",
