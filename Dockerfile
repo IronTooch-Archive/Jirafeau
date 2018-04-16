@@ -10,11 +10,10 @@ RUN apk update && \
 
 WORKDIR /www
 
+COPY .git .git
+RUN git reset --hard && rm -rf .git .gitignore .gitlab-ci.yml CONTRIBUTING.md Dockerfile README.md
 COPY docker/php.ini /usr/local/etc/php/php.ini
 COPY docker/lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY *.php LICENSE.txt ./
-COPY lib lib
-COPY media media
 
 RUN chown -R www-data. . && \
     chmod o=,ug=rwX -R . && \
