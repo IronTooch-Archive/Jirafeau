@@ -20,7 +20,7 @@
 function t($string_id)
 {
     $r = t_in($string_id, t_select_lang());
-    if ($r === false) {
+    if ($r === false || $r === "") {
         $r = t_in($string_id, "en");
         if ($r === false) {
             return "FIX ME: " . $string_id;
