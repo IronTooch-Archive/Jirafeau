@@ -612,7 +612,7 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 '<strong><a id="upload_link" href="f.php?h='. jirafeau_escape($node) .'" title="' .
                     t('DL_PAGE') . '">' . jirafeau_escape($l['file_name']) . '</a></strong>';
                 echo '</td>';
-                echo '<td>' . $l['mime_type'] . '</td>';
+                echo '<td>' . jirafeau_escape($l['mime_type']) . '</td>';
                 echo '<td>' . jirafeau_human_size($l['file_size']) . '</td>';
                 echo '<td>' . ($l['time'] == -1 ? '∞' : jirafeau_get_datetimefield($l['time'])) . '</td>';
                 echo '<td>';
