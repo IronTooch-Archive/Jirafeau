@@ -39,8 +39,8 @@ body {
 }
 
 a, a:link, a:visited {
-	color: #223344;
-	text-decoration: underlined;
+    color: #223344;
+    text-decoration: underlined;
 }
 
 fieldset {

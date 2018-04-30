@@ -230,7 +230,7 @@ else {
         }
         ?>
 
-		<p id="max_file_size" class="config"></p>
+        <p id="max_file_size" class="config"></p>
     <p>
     <?php
     if (jirafeau_has_upload_password($cfg) && $_SESSION['upload_auth']) {

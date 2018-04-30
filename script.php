@@ -81,7 +81,6 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
             exit;
         }
     }
-    
     $key = '';
     if (isset($_POST['key'])) {
         $key = $_POST['key'];
