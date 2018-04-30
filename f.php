@@ -97,7 +97,7 @@ if (!empty($delete_code) && $delete_code == $link['link_code']) {
              <legend> <?php echo t('CONFIRM_DEL') ?> </legend>
              <table>
              <tr><td>
-             <?php echo t('GONNA_DEL') . ' "' . htmlspecialchars($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' ?>
+             <?php echo t('GONNA_DEL') . ' "' . jirafeau_escape($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' ?>
              </td></tr>
              <tr><td>
                 <?php echo t('USING_SERIVCE'). ' <a href="tos.php">' . t('TOS') . '</a>.' ?>
@@ -193,9 +193,9 @@ if (!$password_challenged && !$do_download && !$do_preview) {
     echo '<div>' .
              '<form action="f.php" method="post" id="submit_post" class="form download">'; ?>
              <input type = "hidden" name = "jirafeau" value = "<?php echo JIRAFEAU_VERSION ?>"/><?php
-        echo '<fieldset><legend>' . htmlspecialchars($link['file_name']) . '</legend><table>' .
+        echo '<fieldset><legend>' . jirafeau_escape($link['file_name']) . '</legend><table>' .
              '<tr><td>' .
-             t('NOW_DOWNLOADING') . ' "' . htmlspecialchars($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' .
+             t('NOW_DOWNLOADING') . ' "' . jirafeau_escape($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' .
              '</td></tr>' .
              '<tr><td>' .
              t('USING_SERIVCE'). ' <a href="tos.php">' . t('TOS') . '</a>.' .

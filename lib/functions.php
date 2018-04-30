@@ -597,7 +597,7 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 }
 
                 /* Filter. */
-                if (!empty($name) && !preg_match("/$name/i", htmlspecialchars($l['file_name']))) {
+                if (!empty($name) && !preg_match("/$name/i", jirafeau_escape($l['file_name']))) {
                     continue;
                 }
                 if (!empty($file_hash) && $file_hash != $l['md5']) {
@@ -609,8 +609,8 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 /* Print link informations. */
                 echo '<tr>';
                 echo '<td>' .
-                '<strong><a id="upload_link" href="f.php?h='. htmlspecialchars($node) .'" title="' .
-                    t('DL_PAGE') . '">' . htmlspecialchars($l['file_name']) . '</a></strong>';
+                '<strong><a id="upload_link" href="f.php?h='. jirafeau_escape($node) .'" title="' .
+                    t('DL_PAGE') . '">' . jirafeau_escape($l['file_name']) . '</a></strong>';
                 echo '</td>';
                 echo '<td>' . $l['mime_type'] . '</td>';
                 echo '<td>' . jirafeau_human_size($l['file_size']) . '</td>';
@@ -1242,4 +1242,9 @@ function jirafeau_replace_markers($content, $htmllinebreaks = false)
     }
 
     return $content;
+}
+
+function jirafeau_escape($string)
+{
+    return htmlspecialchars($string, ENT_QUOTES);
 }
