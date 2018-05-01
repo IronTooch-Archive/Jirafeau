@@ -597,7 +597,7 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 }
 
                 /* Filter. */
-                if (!empty($name) && !preg_match("/$name/i", jirafeau_escape($l['file_name']))) {
+                if (!empty($name) && !@preg_match("/$name/i", jirafeau_escape($l['file_name']))) {
                     continue;
                 }
                 if (!empty($file_hash) && $file_hash != $l['md5']) {
