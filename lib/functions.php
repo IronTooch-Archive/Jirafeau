@@ -628,16 +628,19 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "download"/>' .
                 '<input type = "hidden" name = "link" value = "' . $node . '"/>' .
+                jirafeau_admin_csrf_field() .
                 '<input type = "submit" value = "' . t('DL') . '" />' .
                 '</form>' .
                 '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "delete_link"/>' .
                 '<input type = "hidden" name = "link" value = "' . $node . '"/>' .
+                jirafeau_admin_csrf_field() .
                 '<input type = "submit" value = "' . t('DEL_LINK') . '" />' .
                 '</form>' .
                 '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "delete_file"/>' .
                 '<input type = "hidden" name = "md5" value = "' . $l['md5'] . '"/>' .
+                jirafeau_admin_csrf_field() .
                 '<input type = "submit" value = "' . t('DEL_FILE_LINKS') . '" />' .
                 '</form>' .
                 '</td>';
@@ -1247,4 +1250,30 @@ function jirafeau_replace_markers($content, $htmllinebreaks = false)
 function jirafeau_escape($string)
 {
     return htmlspecialchars($string, ENT_QUOTES);
+}
+
+function jirafeau_admin_session_start()
+{
+    $_SESSION['admin_auth'] = true;
+    $_SESSION['admin_csrf'] = md5(uniqid(mt_rand(), true));
+}
+
+function jirafeau_admin_session_end()
+{
+    $_SESSION = array();
+    session_destroy();
+}
+
+function jirafeau_admin_session_logged()
+{
+    return isset($_SESSION['admin_auth']) &&
+           isset($_SESSION['admin_csrf']) &&
+           isset($_POST['admin_csrf']) &&
+           $_SESSION['admin_auth'] === true &&
+           $_SESSION['admin_csrf'] === $_POST['admin_csrf'];
+}
+
+function jirafeau_admin_csrf_field()
+{
+    return "<input type='hidden' name='admin_csrf' value='". $_SESSION['admin_csrf'] . "'/>";
 }

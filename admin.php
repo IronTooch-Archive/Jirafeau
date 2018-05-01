@@ -53,71 +53,57 @@ if (php_sapi_name() == "cli") {
   }
 
   /* Unlog if asked. */
-  if (isset($_POST['action']) && (strcmp($_POST['action'], 'logout') == 0)) {
-      $_SESSION['admin_auth'] = false;
+  if (jirafeau_admin_session_logged() && isset($_POST['action']) && (strcmp($_POST['action'], 'logout') == 0)) {
+      jirafeau_admin_session_end();
   }
 
-  /* Check classic admin password authentification. */
-  if (isset($_POST['admin_password']) && empty($cfg['admin_http_auth_user'])) {
-      if ($cfg['admin_password'] === $_POST['admin_password'] ||
-          $cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
-          $_SESSION['admin_auth'] = true;
-      } else {
-          $_SESSION['admin_auth'] = false;
-          require(JIRAFEAU_ROOT . 'lib/template/header.php');
-          echo '<div class="error"><p>'.
-               t('BAD_PSW') . '</p></div>';
+  if (!jirafeau_admin_session_logged()) {
+      /* Test HTTP authentification. */
+      if (!empty($cfg['admin_http_auth_user']) &&
+          $cfg['admin_http_auth_user'] == $_SERVER['PHP_AUTH_USER']) {
+          jirafeau_admin_session_start();
+      }
+      /* Test web password authentification. */
+      else if (!empty($cfg['admin_password']) && isset($_POST['admin_password'])) {
+          if ($cfg['admin_password'] === $_POST['admin_password'] ||
+              $cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
+              jirafeau_admin_session_start();
+          } else {
+              require(JIRAFEAU_ROOT . 'lib/template/header.php');
+              echo '<div class="error"><p>'. t('BAD_PSW') . '</p></div>';
+              require(JIRAFEAU_ROOT.'lib/template/footer.php');
+              exit;
+          }
+      }
+      /* Admin password prompt form. */
+      else {
+          require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?>
+          <form method="post" class="form login">
+          <fieldset>
+              <table>
+              <tr>
+                  <td class = "label"><label for = "enter_password">
+                  <?php echo t('ADMIN_PSW') . ':'; ?></label>
+                  </td>
+                  <td class = "field"><input type = "password"
+                  name = "admin_password" id = "admin_password"
+                  size = "40" />
+                  </td>
+              </tr>
+              <tr class = "nav">
+                  <td></td>
+                  <td class = "nav next">
+                  <input type = "submit" name = "key" value =
+                  "<?php echo t('LOGIN'); ?>" />
+                  </td>
+              </tr>
+              </table>
+          </fieldset>
+          </form>
+          <?php
           require(JIRAFEAU_ROOT.'lib/template/footer.php');
           exit;
       }
-  }
-  /* Ask for classic admin password authentification. */
-  elseif ((!isset($_SESSION['admin_auth']) || $_SESSION['admin_auth'] != true)
-          && empty($cfg['admin_http_auth_user'])) {
-      require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?>
-      <form method="post" class="form login">
-      <fieldset>
-          <table>
-          <tr>
-              <td class = "label"><label for = "enter_password">
-              <?php echo t('ADMIN_PSW') . ':'; ?></label>
-              </td>
-              <td class = "field"><input type = "password"
-              name = "admin_password" id = "admin_password"
-              size = "40" />
-              </td>
-          </tr>
-          <tr class = "nav">
-              <td></td>
-              <td class = "nav next">
-              <input type = "submit" name = "key" value =
-              "<?php echo t('LOGIN'); ?>" />
-              </td>
-          </tr>
-          </table>
-      </fieldset>
-      </form>
-      <?php
-      require(JIRAFEAU_ROOT.'lib/template/footer.php');
-      exit;
-  }
-  /* Check authenticated user if HTTP authentification is enable. */
-  elseif ((!isset($_SESSION['admin_auth']) || $_SESSION['admin_auth'] != true)
-          && !empty($cfg['admin_http_auth_user'])) {
-      if ($cfg['admin_http_auth_user'] == $_SERVER['PHP_AUTH_USER']) {
-          $_SESSION['admin_auth'] = true;
-      }
-  }
-
-  /* Be sure that no one can access further without admin_auth. */
-  if (!isset($_SESSION['admin_auth']) || $_SESSION['admin_auth'] != true) {
-      $_SESSION['admin_auth'] = false;
-      require(JIRAFEAU_ROOT . 'lib/template/header.php');
-      echo '<div class="error"><p>'.
-           t('NO_ADMIN_AUTH') .
-           '</p></div>';
-      require(JIRAFEAU_ROOT.'lib/template/footer.php');
-      exit;
   }
 
   /* Operations may take a long time.
@@ -138,6 +124,7 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "clean"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
                   <?php echo t('CLEAN_EXPIRED'); ?>
               </td>
@@ -150,6 +137,7 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "clean_async"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
                   <?php echo t('CLEAN_INCOMPLETE'); ?>
               </td>
@@ -162,6 +150,7 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "list"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
                   <?php echo t('LS_FILES'); ?>
               </td>
@@ -174,6 +163,7 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "search_by_name"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
                   <?php echo t('SEARCH_NAME'); ?>
               </td>
@@ -188,6 +178,7 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "search_by_file_hash"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
                   <?php echo t('SEARH_BY_HASH'); ?>
               </td>
@@ -202,8 +193,9 @@ if (php_sapi_name() == "cli") {
           <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "search_link"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
               <td class = "info">
-                  <?php echo t('SEARCH'); ?>
+                  <?php echo t('SEARCH_LINK'); ?>
               </td>
               <td>
                   <input type = "text" name = "link" id = "link"/>
@@ -216,10 +208,10 @@ if (php_sapi_name() == "cli") {
           </table>
           <form method="post">
               <input type = "hidden" name = "action" value = "logout" />
+              <?php echo jirafeau_admin_csrf_field() ?>
               <input type = "submit" value = "<?php echo t('LOGOUT'); ?>" />
           </form>
           </fieldset></div><?php
-
   }
 
   /* Check for actions */
