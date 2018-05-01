@@ -553,13 +553,13 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
 {
     echo '<fieldset><legend>';
     if (!empty($name)) {
-        echo t('FILENAME') . ": $name ";
+        echo t('FILENAME') . ": " . jirafeau_escape($name);
     }
     if (!empty($file_hash)) {
-        echo t('FILE') . ": $file_hash ";
+        echo t('FILE') . ": " . jirafeau_escape($file_hash);
     }
     if (!empty($link_hash)) {
-        echo t('LINK') . ": $link_hash ";
+        echo t('LINK') . ": " . jirafeau_escape($link_hash);
     }
     if (empty($name) && empty($file_hash) && empty($link_hash)) {
         echo t('LS_FILES');
