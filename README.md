@@ -1,3 +1,13 @@
+# SECURITY ANNOUNCEMENT
+
+## 3th Mai 2018
+
+Multiple security vulnerabilities has been reported by [Bishopfox team](https://www.bishopfox.com/) on Jirafeau project.
+
+The next release of Jirafeau (3.4.1) will include security fixes and is planned 12th Mai 2018.
+
+Upgrading Jirafeau is recommended.
+
 # Jirafeau
 
 Welcome to the official Jirafeau project, an [Open-Source software](https://en.wikipedia.org/wiki/Open-source_software).
