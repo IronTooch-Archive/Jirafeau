@@ -254,7 +254,7 @@ Feel free to open a bug in the [GitLab's issues](https://gitlab.com/mojo42/Jiraf
 If your browser supports HTML5 file API, you can send files as big as you want.
 
 For browsers who does not support HTML5 file API, the limitation come from PHP configuration.
-You have to set [post_max_size](https://php.net/manual/en/ini.core.php#ini.post-max-size) and [upload_max_filesize](https://php.net/manual/en/ini.core.php#ini.upload-max-filesize) in your php configuration.
+You have to set [post_max_size](https://php.net/manual/en/ini.core.php#ini.post-max-size) and [upload_max_filesize](https://php.net/manual/en/ini.core.php#ini.upload-max-filesize) in your php configuration. Note that Nginx setups may requiere to configure `client_max_body_size`.
 
 If you don't want to allow unlimited upload size, you can still setup a maximal file size in Jirafeau's setting (see ```maximal_upload_size``` in your configuration)
 
