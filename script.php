@@ -203,8 +203,7 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
     }
     exit;
 } elseif (isset($_GET['get_capacity'])) {
-    echo min(jirafeau_ini_to_bytes(ini_get('post_max_size')),
-              jirafeau_ini_to_bytes(ini_get('upload_max_filesize')));
+    echo jirafeau_get_max_upload_size_bytes();
 } elseif (isset($_GET['get_maximal_upload_size'])) {
     echo $cfg['maximal_upload_size'];
 } elseif (isset($_GET['get_version'])) {

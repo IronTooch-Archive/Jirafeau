@@ -204,7 +204,7 @@ function jirafeau_ini_to_bytes($value)
 function jirafeau_get_max_upload_size_bytes()
 {
     return min(jirafeau_ini_to_bytes(ini_get('post_max_size')),
-                jirafeau_ini_to_bytes(ini_get('upload_max_filesize')));
+               jirafeau_ini_to_bytes(ini_get('upload_max_filesize')));
 }
 
 /**
@@ -213,9 +213,7 @@ function jirafeau_get_max_upload_size_bytes()
  */
 function jirafeau_get_max_upload_size()
 {
-    return jirafeau_human_size(
-            min(jirafeau_ini_to_bytes(ini_get('post_max_size')),
-                 jirafeau_ini_to_bytes(ini_get('upload_max_filesize'))));
+    return jirafeau_human_size(jirafeau_get_max_upload_size_bytes());
 }
 
 /**
