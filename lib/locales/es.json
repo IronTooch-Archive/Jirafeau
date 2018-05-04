@@ -108,5 +108,11 @@
     "SECOND": "segundo",
     "STEP": "paso",
     "YEAR": "año",
-    "JI_WEB_RE": "Jirafeau, tu repositorio web de archivos"
+    "JI_WEB_RE": "Jirafeau, tu repositorio web de archivos",
+    "MADE_WITH": "Hecho con",
+    "1_Q": "Un cuarto",
+    "CONFIRM_DEL": "Confirmar borrado",
+    "GONNA_DEL": "Estás a punto de borrar",
+    "DELETE": "Borrar",
+    "TOS": "Términos de Servicio"
 }
