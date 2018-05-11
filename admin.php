@@ -85,13 +85,14 @@ if (php_sapi_name() == "cli") {
                   <td class = "label"><label for = "enter_password">
                   <?php echo t('ADMIN_PSW') . ':'; ?></label>
                   </td>
+              </tr>
+              <tr>
                   <td class = "field"><input type = "password"
                   name = "admin_password" id = "admin_password"
                   size = "40" />
                   </td>
               </tr>
               <tr class = "nav">
-                  <td></td>
                   <td class = "nav next">
                   <input type = "submit" name = "key" value =
                   "<?php echo t('LOGIN'); ?>" />
