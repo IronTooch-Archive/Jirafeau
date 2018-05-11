@@ -19,13 +19,13 @@
  */
 
 header('Content-Type: text/javascript');
-
 define('JIRAFEAU_ROOT', dirname(__FILE__) . '/../');
 
 require(JIRAFEAU_ROOT . 'lib/settings.php');
 require(JIRAFEAU_ROOT . 'lib/functions.php');
 require(JIRAFEAU_ROOT . 'lib/lang.php');
 ?>
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt GPL-v3-or-Later
 var web_root = "<?php echo $cfg['web_root']; ?>";
 
 var lang_array = <?php echo json_lang_generator(null); ?>;
@@ -746,3 +746,4 @@ function addCopyListener(button_id, link_id) {
             .addEventListener("click", function() {
                 copyLinkToClipboard(link_id);});
 }
+// @license-end
