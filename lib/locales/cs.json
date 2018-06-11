@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Heslo administrátora",
     "ERR_OCC": "Chyba.",
     "BASE_ADDR": "",
-    "USING_SERIVCE": "",
+    "USING_SERIVCE": "Používáním této služby, souhlasíte s",
     "CLEAN": "Vyčistit",
     "CLEAN_EXPIRED": "Vyčistit soubory, které vypršely",
     "CLEAN_INCOMPLETE": "Vyčistit nedokončené přenosy",
@@ -19,7 +19,7 @@
     "DELETED_LINKS": "Smazané odkazy",
     "DIRECT_DL": "Přímý odkaz na stažení",
     "DL": "Stáhnout",
-    "DL_PAGE": "",
+    "DL_PAGE": "Stránka ke stažení",
     "EXPIRE": "Vyprší",
     "FILE_DELETED": "Soubor byl smazán.",
     "2_BIG": "Soubor je moc velký",
@@ -93,7 +93,7 @@
     "VIEW_LINK": "Zobrazit odkaz",
     "AUTO_DESTRUCT": "Pozor, soubor bude smazán jakmile bude přečten",
     "BAD_PSW": "Špatné heslo.",
-    "NOW_DOWNLOADING": "",
+    "NOW_DOWNLOADING": "Chystáte se stáhnout soubor",
     "NOW_LOGOUT": "Odhlášen",
     "MANUAL_CREATE": "Vytvořte tento adresář manuálně.",
     "GIMME_W": "",
@@ -107,5 +107,10 @@
     "MINUTE": "minuta",
     "HOUR": "hodina",
     "SECOND": "sekunda",
-    "LESS_1_SEC": "méně než sekunda"
+    "LESS_1_SEC": "méně než sekunda",
+    "1_Q": "Čvrtletí",
+    "CONFIRM_DEL": "Potvrdit smazání",
+    "GONNA_DEL": "Chystáte se smazat soubor",
+    "DELETE": "Smazat",
+    "TOS": "Podmínky užití"
 }
