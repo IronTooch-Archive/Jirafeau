@@ -65,7 +65,7 @@ System requirements:
 - No database required, no mail required
 
 Installation steps:
-- Clone the [repository](https://gitlab.com/mojo42/Jirafeau/) or download the latest ([release](https://gitlab.com/mojo42/Jirafeau/tags) from GitLab onto your webserver
+- Clone the [repository](https://gitlab.com/mojo42/Jirafeau/) or download the latest [release](https://gitlab.com/mojo42/Jirafeau/tags) from GitLab onto your webserver
 - Set owner & group according to your webserver
 - A) Setup with the installation wizard (web):
   - Open your browser and go to your installed location, eg. ```https://example.com/jirafeau/```
