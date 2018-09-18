@@ -255,7 +255,12 @@ if (php_sapi_name() == "cli") {
           header('Content-Disposition: attachment; filename="' .
                   $l['file_name'] . '"');
           if (file_exists(VAR_FILES . $p . $l['md5'])) {
-              readfile(VAR_FILES . $p . $l['md5']);
+              $r = fopen(VAR_FILES . $p . $l['md5'], 'r');
+              while (!feof($r)) {
+                  print fread($r, 1024);
+                  ob_flush();
+              }
+              fclose($r);
           }
           exit;
       }
