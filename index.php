@@ -101,7 +101,7 @@ else {
         <a id="upload_link_email" href=""><img id="upload_image_email"/></a>
     </p><p>
         <code id=upload_link_text></code>
-        <button id="upload_link_button">✂</button>
+        <button id="upload_link_button">⎘</button>
     </p>
     </div>
 
@@ -112,7 +112,7 @@ else {
         <a id="preview_link" href=""><?php echo t('VIEW_LINK') ?></a>
     </p><p>
         <code id=preview_link_text></code>
-        <button id="preview_link_button">✂</button>
+        <button id="preview_link_button">⎘</button>
     </p>
     </div>
     <?php
@@ -123,7 +123,7 @@ else {
         <a id="direct_link" href=""><?php echo t('DIRECT_DL') ?></a>
     </p><p>
         <code id=direct_link_text></code>
-        <button id="direct_link_button">✂</button>
+        <button id="direct_link_button">⎘</button>
     </p>
     </div>
 
@@ -132,7 +132,7 @@ else {
         <a id="delete_link" href=""><?php echo t('DELETE_LINK') ?></a>
     </p><p>
         <code id=delete_link_text></code>
-        <button id="delete_link_button">✂</button>
+        <button id="delete_link_button">⎘</button>
     </p>
     </div>
 
