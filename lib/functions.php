@@ -498,16 +498,13 @@ function check_errors($cfg)
         exit;
     }
 
-    /* check if the destination dirs are writable */
-    $writable = is_writable(VAR_FILES) && is_writable(VAR_LINKS);
-
     /* Checking for errors. */
     if (!is_writable(VAR_FILES)) {
-        add_error(t('The file directory is not writable!'), VAR_FILES);
+        add_error(t('FILE_DIR_W'), VAR_FILES);
     }
 
     if (!is_writable(VAR_LINKS)) {
-        add_error(t('The link directory is not writable!'), VAR_LINKS);
+        add_error(t('LINK_DIR_W'), VAR_LINKS);
     }
 
     if (!is_writable(VAR_ASYNC)) {
