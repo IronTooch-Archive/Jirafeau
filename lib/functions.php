@@ -25,9 +25,16 @@
  */
 function s2p($s)
 {
+    $block_size = 8;
     $p = '';
     for ($i = 0; $i < strlen($s); $i++) {
-        $p .= $s{$i} . '/';
+        $p .= $s{$i};
+        if (($i + 1) % $block_size == 0) {
+            $p .= '/';
+        }
+    }
+    if (strlen($s) % $block_size != 0) {
+        $p .= '/';
     }
     return $p;
 }
