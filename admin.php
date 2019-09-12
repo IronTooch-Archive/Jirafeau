@@ -65,8 +65,7 @@ if (php_sapi_name() == "cli") {
       }
       /* Test web password authentification. */
       else if (!empty($cfg['admin_password']) && isset($_POST['admin_password'])) {
-          if ($cfg['admin_password'] === $_POST['admin_password'] ||
-              $cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
+          if ($cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
               jirafeau_admin_session_start();
           } else {
               require(JIRAFEAU_ROOT . 'lib/template/header.php');
