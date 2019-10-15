@@ -742,8 +742,10 @@ function copyLinkToClipboard(link_id) {
 }
 
 function addCopyListener(button_id, link_id) {
-    document.getElementById(button_id)
+    if(document.getElementById(button_id)){
+        document.getElementById(button_id)
             .addEventListener("click", function() {
                 copyLinkToClipboard(link_id);});
+    }
 }
 // @license-end
