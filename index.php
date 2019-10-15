@@ -175,7 +175,7 @@ else {
         </tr>
         <tr>
         <td><label for="input_key"><?php echo t('PSW') . ':'; ?></label></td>
-        <td><input type="text" name="key" id="input_key" /></td>
+        <td><input type="password" name="key" id="input_key" /></td>
         </tr>
         <tr>
         <td><label for="select_time"><?php echo t('TIME_LIM') . ':'; ?></label></td>
