@@ -251,8 +251,8 @@ case 2:
         </tr> <tr> <td colspan = "2"><input type = "submit"
         class = "navleft" name = "previous" value = "<?php
         echo t('PREV_STEP'); ?>" />
-         <input type = "submit" class = "navright" name = "next" value = "
-        <?php echo t('NEXT_STEP'); ?>" />
+         <input type = "submit" class = "navright" name = "next" value = 
+        "<?php echo t('NEXT_STEP'); ?>" />
         </td> </tr> </table> </fieldset>
         </form> </div> <?php
 break;
