@@ -268,10 +268,7 @@ case 3:
     ?></legend> <table> <tr> <td class = "info" colspan =
         "2"><?php echo t('SETTING_UP');
     ?></td> </tr> <tr> <td class = "nav previous"><input type =
-        "submit" name = "previous" value =
-        "
-    <?php
-    echo t('PREV_STEP');
+        "submit" name = "previous" value = " <?php echo t('PREV_STEP');
     ?>" /></td> <td></td> </tr>
         </table> </fieldset> </form> </div>
     <?php
