@@ -36,7 +36,7 @@
   @import url(https://fonts.googleapis.com/css?family=Open+Sans|Lobster);
 
 body {
-  background: ##050505;
+  background: #050505;
   background-image: url("bg1.png"), url("bg2.png");
   background-repeat: repeat-x, repeat;
   font-family: 'Lobster', cursive;
@@ -124,7 +124,8 @@ input[type="submit"]:focus {
   font-family: 'Lobster', cursive;
   border: 0;
   position: relative;
-  top: 5px;
+  background: #085B69;
+  border-bottom: 5px solid #157EFB;
   margin-bottom: 15px;
 }
 

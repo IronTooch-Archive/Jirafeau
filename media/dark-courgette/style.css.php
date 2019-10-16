@@ -24,8 +24,6 @@
  * The content is dynamically generated for easier handling.
  */
 
-$dark = '#8B4513';
-
 header('Content-type: text/css');
 
 ?>
@@ -114,7 +112,7 @@ input[type="submit"] {
   padding: 0.4em 2.2em;
   font-size: 1.1em;
   color: #FFF;
-  border-bottom: 5px solid #fff;
+  border-bottom: 5px solid #FFF;
   cursor: pointer;
   margin: 10px;
 }
@@ -132,8 +130,10 @@ select { width: 100%; }
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   border: 0;
+  color: #555;
   position: relative;
-  top: 5px;
+  background: #FFF;
+  border-bottom: 5px solid #555;
   margin-bottom: 15px;
 }
 

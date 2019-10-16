@@ -24,8 +24,6 @@
  * The content is dynamically generated for easier handling.
  */
 
-$dark = '#8B4513';
-
 header('Content-type: text/css');
 
 ?>
@@ -132,7 +130,8 @@ input[type="submit"]:hover,
 input[type="submit"]:focus {
   border: 0;
   position: relative;
-  top: 5px;
+  background: #085B69;
+  border-bottom: 5px solid #0D9CB2;
   margin-bottom: 15px;
 }
 
