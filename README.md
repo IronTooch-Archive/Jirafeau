@@ -152,6 +152,7 @@ An other obvious basic security is to let access users to the site by HTTPS (mak
 
 Data encryption can be activated in options. This feature makes the server encrypt data and send the decryt key to the user (inside download URL).
 The decrypt key is not stored on the server so if you loose an url, you won't be able to retrieve file content.
+Encryption is configured to use AES256 in OFB mode.
 In case of security troubles on the server, attacker won't be able to access files.
 
 By activating this feature, you have to be aware of few things:
