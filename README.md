@@ -432,3 +432,12 @@ The very first version of Jirafeau after the fork of Jyraphe.
 - Docker fix
 - Advertise javascript license for LibreJS compatibility
 - other minor fixes
+
+## Version 4.0.0
+
+- Removed plain-text password support for admin auth (breaking change). Update `admin_password` option using `echo -n MyNewPassw0rd | sha256sum` command.
+- Default folder sub-division to 8 characters (breaking change).
+- New option `upload_ip_nopassword` to allow a list of IP to access Jirafeau without password
+- Bugfix with LibreJS
+- Other minor bug fixes
+- More languages supported
