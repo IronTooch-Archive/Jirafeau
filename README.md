@@ -25,7 +25,7 @@ Next Release [![Build Status Next Release](https://gitlab.com/mojo42/Jirafeau/ba
 - Shortened URLs using base 64 encoding
 - Maximal upload size configurable
 - NO database, only use basic PHP
-- Simple language support :gb: :fr: :de: :it: :nl: :ro: :sk: :hu: :cn: :gr: :ru: :es: :tk: :flag_tr: :flag_pt: :flag_br:
+- Simple language support with a lot of langages (help us on [weblate](https://hosted.weblate.org/engage/jirafeau/)!)
 - File level [Deduplication](http://en.wikipedia.org/wiki/Data_deduplication) for storage optimization (does store duplicate files only once, but generate multiple links)
 - Optional data encryption
 - Small administration interface
@@ -194,11 +194,11 @@ and the Contribution Guidelines
 
 Of course ! Translations are easy to make and no technical knowledge is required.
 
-Simply go to [Jirafeau's Weblate](https://hosted.weblate.org/projects/jirafeau/master/).
+Simply go to [Jirafeau's Weblate](https://hosted.weblate.org/engage/jirafeau/).
 
 If you want to add a new language in the list, feel free to contact us or leave a comment in ticket #9.
 
-We would like to thank all anonymous contributors on weblate. :)
+Thanks to all contributors ! :)
 
 ### How do I upgrade my Jirafeau?
 
