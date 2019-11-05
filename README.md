@@ -109,6 +109,23 @@ There is nothing special to do to update from/to the following versions:
 - 3.3.0 -> 3.4.0
 - 3.4.0 -> 3.4.1
 
+### From 3.4.1 to 4.0.0
+
+You may have to change your administrator password in your config file as admin password are only stored using sha256 (SHA2).
+To do so, edit `lib/config.local.php` and update `admin_password` option using `echo -n MyNewPassw0rd | sha256sum` command.
+
+Subfolder division changed so Jirafeau storage. If you need to migrate your data:
+1. Be sure to make any backups before any operation
+2. Go to `var-` folder
+3. Be sure you have the rigths to create and delete files and folders with your current user
+4. Run the following commands:
+```bash
+# Migrate files folder
+find files -type f ! -name "*_count" | while read f; do bn="$(basename "$f")"; dst="files/${bn:0:8}/${bn:8:8}/${bn:16:8}/${bn:24:8}/"; mkdir -p "$dst"; mv "$f" "$dst" ; mv "${f}_count" "$dst"; done; find files -maxdepth 1 -type d -iname "?" -exec rm -rf {} \;
+# Migrate links folder
+find links -type f | while read link; do bn="$(basename "$link")"; mkdir "links/$bn"; mv "$link" "links/$bn/"; done; find links -maxdepth 1 -type d -iname "?" -exec rm -rf {} \;
+```
+
 ### Troubleshooting
 
 If you have some troubles, consider the following cases
@@ -435,7 +452,7 @@ The very first version of Jirafeau after the fork of Jyraphe.
 
 ## Version 4.0.0
 
-- Removed plain-text password support for admin auth (breaking change). Update `admin_password` option using `echo -n MyNewPassw0rd | sha256sum` command.
+- Removed plain-text password support for admin auth (breaking change).
 - Default folder sub-division to 8 characters (breaking change).
 - New option `upload_ip_nopassword` to allow a list of IP to access Jirafeau without password
 - Bugfix with LibreJS
