@@ -114,10 +114,12 @@ There is nothing special to do to update from/to the following versions:
 You may have to change your administrator password in your config file as admin password are only stored using sha256 (SHA2).
 To do so, edit `lib/config.local.php` and update `admin_password` option using `echo -n MyNewPassw0rd | sha256sum` command.
 
-Subfolder division changed so Jirafeau storage. If you need to migrate your data:
-1. Be sure to make any backups before any operation
+Subfolder division changed in Jirafeau storage. You can either start from a fresh `var-` folder or you need to migrate your data.
+
+In order to migrate your existing data:
+1. Be sure to have a working backup of your Jirafeau instance and/or the rest of your hosting before any operation
 2. Go to `var-` folder
-3. Be sure you have the rigths to create and delete files and folders with your current user
+3. Be sure you have read and write permissions on files and folders with your current user
 4. Run the following commands:
 ```bash
 # Migrate files folder
