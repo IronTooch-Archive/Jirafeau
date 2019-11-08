@@ -567,16 +567,16 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
         echo t('LS_FILES');
     }
     echo '</legend>';
-    echo '<table>';
+    echo '<table border="1" width="1100">';
     echo '<tr>';
-    echo '<td>' . t('FILENAME') . '</td>';
-    echo '<td>' . t('TYPE') . '</td>';
-    echo '<td>' . t('SIZE') . '</td>';
-    echo '<td>' . t('EXPIRE') . '</td>';
-    echo '<td>' . t('ONETIME') . '</td>';
-    echo '<td>' . t('UPLOAD_DATE') . '</td>';
-    echo '<td>' . t('ORIGIN') . '</td>';
-    echo '<td>' . t('ACTION') . '</td>';
+    echo '<th>' . t('FILENAME') . '</th>';
+    echo '<th>' . t('TYPE') . '</th>';
+    echo '<th>' . t('SIZE') . '</th>';
+    echo '<th>' . t('EXPIRE') . '</th>';
+    echo '<th>' . t('ONETIME') . '</th>';
+    echo '<th>' . t('UPLOAD_DATE') . '</th>';
+    echo '<th>' . t('ORIGIN') . '</th>';
+    echo '<th>' . t('ACTION') . '</th>';
     echo '</tr>';
 
     /* Get all links files. */
