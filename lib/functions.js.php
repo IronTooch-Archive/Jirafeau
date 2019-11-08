@@ -316,17 +316,17 @@ function add_time_string_to_date(d, time)
     }
     if (time == 'month')
     {
-        d.setSeconds (d.getSeconds() + 2419200);
+		d.setSeconds (d.getSeconds() + 2592000);
         return true;
     }
     if (time == 'quarter')
     {
-        d.setSeconds (d.getSeconds() + 7257600);
+		d.setSeconds (d.getSeconds() + 7776000);
         return true;
     }
     if (time == 'year')
     {
-        d.setSeconds (d.getSeconds() + 29030400);
+		d.setSeconds (d.getSeconds() + 31536000);
         return true;
     }
     return false;
