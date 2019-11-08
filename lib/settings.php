@@ -62,9 +62,9 @@ define('JIRAFEAU_MINUTE', 60); // 60
 define('JIRAFEAU_HOUR', 3600); // JIRAFEAU_MINUTE * 60
 define('JIRAFEAU_DAY', 86400); // JIRAFEAU_HOUR * 24
 define('JIRAFEAU_WEEK', 604800); // JIRAFEAU_DAY * 7
-define('JIRAFEAU_MONTH', 2419200); // JIRAFEAU_WEEK * 4
-define('JIRAFEAU_QUARTER', 7257600); // JIRAFEAU_MONTH * 3
-define('JIRAFEAU_YEAR', 29030400); // JIRAFEAU_MONTH * 12
+define('JIRAFEAU_MONTH', 2592000); // JIRAFEAU_DAY * 30
+define('JIRAFEAU_QUARTER', 7776000); // JIRAFEAU_DAY * 90
+define('JIRAFEAU_YEAR', 31536000); // JIRAFEAU_DAY * 365
 
 // set UTC as default timezone for all date/time functions
 date_default_timezone_set ('UTC');
