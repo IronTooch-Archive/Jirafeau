@@ -100,7 +100,7 @@ if (!empty($delete_code) && $delete_code == $link['link_code']) {
              <?php echo t('GONNA_DEL') . ' "' . jirafeau_escape($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' ?>
              </td></tr>
              <tr><td>
-                <?php echo t('USING_SERIVCE'). ' <a href="tos.php">' . t('TOS') . '</a>.' ?>
+                <?php echo t('USING_SERIVCE'). ' <a href="tos.php" target="_blank" rel="noopener noreferrer">' . t('TOS') . '</a>.' ?>
              </td></tr>
              <tr><td>
                 <input type="submit" id="submit_delete"  value="<?php echo t('DELETE'); ?>"
@@ -147,7 +147,7 @@ if (!empty($link['key'])) {
              '<input type = "password" name = "key" />' .
              '</td></tr>' .
              '<tr><td>' .
-             t('USING_SERIVCE'). ' <a href="tos.php">' . t('TOS') . '</a>.' .
+             t('USING_SERIVCE'). ' <a href="tos.php" target="_blank" rel="noopener noreferrer">' . t('TOS') . '</a>.' .
              '</td></tr>';
 
         if ($link['onetime'] == 'O') {
@@ -198,7 +198,7 @@ if (!$password_challenged && !$do_download && !$do_preview) {
              t('NOW_DOWNLOADING') . ' "' . jirafeau_escape($link['file_name']) . '" (' . jirafeau_human_size($link['file_size']) . ').' .
              '</td></tr>' .
              '<tr><td>' .
-             t('USING_SERIVCE'). ' <a href="tos.php">' . t('TOS') . '</a>.' .
+             t('USING_SERIVCE'). ' <a href="tos.php" target="_blank" rel="noopener noreferrer">' . t('TOS') . '</a>.' .
              '</td></tr>';
 
     if ($link['onetime'] == 'O') {
