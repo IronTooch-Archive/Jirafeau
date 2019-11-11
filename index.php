@@ -166,8 +166,10 @@ else {
     <?php echo t('SEL_FILE'); ?>
     </legend>
     <p>
-    <input type="file" id="file_select" size="30"
-    onchange="control_selected_file_size(<?php echo $cfg['maximal_upload_size'] ?>, '<?php echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . $cfg['maximal_upload_size'] . " MB"; ?>')"/>
+        <input type="file" id="file_select" size="30"
+    onchange="control_selected_file_size(<?php echo $cfg['maximal_upload_size'] ?>, '<?php if ($cfg['maximal_upload_size'] > 1024) 
+		{echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . $cfg['maximal_upload_size']/1024 . " GB.";} 
+			else {echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . $cfg['maximal_upload_size'] . " MB.";} ?>')"/>
     </p>
 
     <div id="options">
@@ -230,9 +232,13 @@ else {
         </tr>
 
         <?php
-        if ($cfg['maximal_upload_size'] > 0) {
+        if ($cfg['maximal_upload_size'] > 0 && $cfg['maximal_upload_size'] < 1024) {
             echo '<p class="config">' . t('FILE_LIM');
-            echo " " . $cfg['maximal_upload_size'] . " MB</p>";
+            echo " " . $cfg['maximal_upload_size'] . " MB.</p>";
+        }
+		else {
+		    echo '<p class="config">' . t('FILE_LIM');
+            echo " " . $cfg['maximal_upload_size']/1024 . " GB.</p>";
         }
         ?>
 
