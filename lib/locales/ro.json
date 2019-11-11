@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Parola de administrare", 
     "ERR_OCC": "A apărut o eroare.", 
     "BASE_ADDR": "Adresa de bază", 
-    "USING_SERIVCE": "Utilizând serviciile noastre, accepţi", 
+    "USING_SERVICE": "Utilizând serviciile noastre, accepţi", 
     "CLEAN": "Curăţă", 
     "CLEAN_EXPIRED": "Şterge fişierele expirate", 
     "CLEAN_INCOMPLETE": "Şterge transferurile vechi nefinalizate", 

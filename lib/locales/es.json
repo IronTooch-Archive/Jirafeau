@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Contraseña de Administración",
     "ERR_OCC": "Ocurrió un error.",
     "BASE_ADDR": "Dirección base",
-    "USING_SERIVCE": "Al utilizar nuestros servicios, acepta nuestros",
+    "USING_SERVICE": "Al utilizar nuestros servicios, acepta nuestros",
     "CLEAN": "Limpiar",
     "CLEAN_EXPIRED": "Limpiar archivos caducados",
     "CLEAN_INCOMPLETE": "Limpiar las transferencias sin terminar",

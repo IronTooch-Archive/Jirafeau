@@ -44,7 +44,7 @@
     "GIMME_PSW": "Bu dosya için tedarik şifresi",
     "ACCESS_KO": "Erişim engellendi",
     "NOW_DOWNLOADING": "İndirmek üzeresiniz",
-    "USING_SERIVCE": "Hizmetimizi kullanarak, kabul edeceksiniz",
+    "USING_SERVICE": "Hizmetimizi kullanarak, kabul edeceksiniz",
     "TOS": "Kullanım Şartları",
     "AUTO_DESTRUCT": "Uyarı, bu dosya indirildikten sonra kendiliğinden silinecektir",
     "INTERNAL_ERROR_DEL": "Dosya oluşturulurken iç hata meydana geldi.",

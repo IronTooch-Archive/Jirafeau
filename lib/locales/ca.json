@@ -44,7 +44,7 @@
     "GIMME_PSW": "Introdueix la contrasenya d'aquest fitxer",
     "ACCESS_KO": "Accés denegat",
     "NOW_DOWNLOADING": "Estàs a punt de baixar-te",
-    "USING_SERIVCE": "Si utilitzes el nostre servei, acceptes les nostres",
+    "USING_SERVICE": "Si utilitzes el nostre servei, acceptes les nostres",
     "TOS": "Condicions del Servei",
     "AUTO_DESTRUCT": "Alerta! Aquest fitxer s'eliminarà un cop llegit",
     "INTERNAL_ERROR_DEL": "S'ha produït un error intern mentre es creava el fitxer.",

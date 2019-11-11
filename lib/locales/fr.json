@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Mot de passe administrateur",
     "ERR_OCC": "Une erreur s'est produite",
     "BASE_ADDR": "Adresse d'origine",
-    "USING_SERIVCE": "En utilisant nos services, vous acceptez nos",
+    "USING_SERVICE": "En utilisant nos services, vous acceptez nos",
     "CLEAN": "Nettoyage",
     "CLEAN_EXPIRED": "Nettoyer les fichiers expirés",
     "CLEAN_INCOMPLETE": "Nettoyer les anciens transferts inachevés",

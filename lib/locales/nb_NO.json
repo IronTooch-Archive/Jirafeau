@@ -47,7 +47,7 @@
     "GIMME_PSW": "Angi passordet for denne fila",
     "ACCESS_KO": "Tilgang nektet",
     "NOW_DOWNLOADING": "Du er i ferd med å laste ned",
-    "USING_SERIVCE": "Ved å bruke tjenestene våre, godtar du",
+    "USING_SERVICE": "Ved å bruke tjenestene våre, godtar du",
     "TOS": "Tjenestevilkårene",
     "AUTO_DESTRUCT": "Advarsel, denne fila vil bli slettet etter at den er lest",
     "INTERNAL_ERROR_DEL": "Intern fil under filopprettelse.",

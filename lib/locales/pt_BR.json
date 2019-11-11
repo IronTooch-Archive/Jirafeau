@@ -44,7 +44,7 @@
     "GIMME_PSW": "Coloque a senha para este arquivo",
     "ACCESS_KO": "Acesso negado",
     "NOW_DOWNLOADING": "Você está prestes a fazer o download",
-    "USING_SERIVCE": "Ao usar os nossos serviços, você aceita a nossa",
+    "USING_SERVICE": "Ao usar os nossos serviços, você aceita a nossa",
     "TOS": "Termos do Serviço",
     "AUTO_DESTRUCT": "Cuidado, esse arquivo irá se auto-destruir após ser lido",
     "INTERNAL_ERROR_DEL": "Erro interno durante a criação do arquivo.",

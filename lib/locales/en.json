@@ -47,7 +47,7 @@
     "GIMME_PSW": "Supply password for this file",
     "ACCESS_KO": "Access denied",
     "NOW_DOWNLOADING": "You are about to download",
-    "USING_SERIVCE": "By using our services, you accept our",
+    "USING_SERVICE": "By using our services, you accept our",
     "TOS": "Terms of Service",
     "AUTO_DESTRUCT": "Warning, this file will self-destruct after being read",
     "INTERNAL_ERROR_DEL": "Internal error during file creation.",

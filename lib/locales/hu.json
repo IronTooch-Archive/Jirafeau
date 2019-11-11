@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Admin jelszó",
     "ERR_OCC": "Valami hiba történt.",
     "BASE_ADDR": "Alap cím",
-    "USING_SERIVCE": "A szolgáltatás használatával elfogadod a feltételeket",
+    "USING_SERVICE": "A szolgáltatás használatával elfogadod a feltételeket",
     "CLEAN": "Tisztít",
     "CLEAN_EXPIRED": "Lejárt fájlok száma",
     "CLEAN_INCOMPLETE": "Régebbi, befejezetlen feltöltések törlése",

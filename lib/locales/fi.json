@@ -8,7 +8,7 @@
     "ADMIN_PSW": "Ylläpitäjän salasana",
     "ERR_OCC": "Virhe ilmaantui.",
     "BASE_ADDR": "Perusosoite",
-    "USING_SERIVCE": "Käyttäessäsi palvelua, hyväksyt",
+    "USING_SERVICE": "Käyttäessäsi palvelua, hyväksyt",
     "CLEAN": "Siivoa",
     "CLEAN_EXPIRED": "Siivoa vanhentuneet tiedostot",
     "CLEAN_INCOMPLETE": "Siivoa vanhat keskeneräiset lataukset",

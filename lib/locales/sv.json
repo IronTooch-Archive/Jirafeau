@@ -47,7 +47,7 @@
     "GIMME_PSW": "Ange lösenordet för den här filen",
     "ACCESS_KO": "Åtkomst nekas",
     "NOW_DOWNLOADING": "Du har valt att hämta",
-    "USING_SERIVCE": "Genom att använda tjänsten godkänner du våra",
+    "USING_SERVICE": "Genom att använda tjänsten godkänner du våra",
     "TOS": "villkor",
     "AUTO_DESTRUCT": "Varning, den här filen kommer att tas bort när den har hämtats",
     "INTERNAL_ERROR_DEL": "Internt fel vid borttagning av fil.",
