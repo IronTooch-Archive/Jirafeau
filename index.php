@@ -36,13 +36,13 @@ require(JIRAFEAU_ROOT . 'lib/template/header.php');
 
 /* Check if user is allowed to upload. */
 // First check: Challenge by IP NO PASSWORD
-if (true === jirafeau_challenge_upload_ip($cfg['upload_ip_nopassword'], get_ip_address($cfg))) {
+if (true === jirafeau_challenge_upload_ip_without_password($cfg, get_ip_address($cfg))) {
     $_SESSION['upload_auth'] = true;
     $_POST['upload_password'] = '';
     $_SESSION['user_upload_password'] = $_POST['upload_password'];
 }
 // Second check: Challenge by IP
-elseif (true === jirafeau_challenge_upload_ip($cfg['upload_ip'], get_ip_address($cfg))) {
+elseif (true === jirafeau_challenge_upload_ip($cfg, get_ip_address($cfg))) {
     // Is an upload password required?
     if (jirafeau_has_upload_password($cfg)) {
         // Logout action
@@ -274,7 +274,7 @@ else {
 
     <?php
     if (jirafeau_has_upload_password($cfg)
-        && false === jirafeau_challenge_upload_ip($cfg['upload_ip_nopassword'], get_ip_address($cfg))) {
+        && false === jirafeau_challenge_upload_ip_without_password($cfg, get_ip_address($cfg))) {
         ?>
     <form method="post" class="form logout">
         <input type = "hidden" name = "action" value = "logout"/>

@@ -1074,19 +1074,14 @@ function jirafeau_challenge_upload_password($cfg, $password)
 }
 
 /**
- * Test if visitor's IP is authorized to upload.
+ * Test if the given IP is whitelisted by the given list.
  *
  * @param $allowedIpList array of allowed IPs
  * @param $challengedIp IP to be challenged
  * @return true if IP is authorized, false otherwise.
  */
-function jirafeau_challenge_upload_ip($allowedIpList, $challengedIp)
+function jirafeau_challenge_ip($allowedIpList, $challengedIp)
 {
-    // skip if list is empty = all IPs allowed
-    if (count($allowedIpList) == 0) {
-        return true;
-    }
-    // test given IP against each allowed IP
     foreach ($allowedIpList as $i) {
         if ($i == $challengedIp) {
             return true;
@@ -1100,6 +1095,42 @@ function jirafeau_challenge_upload_ip($allowedIpList, $challengedIp)
         }
     }
     return false;
+}
+
+/**
+ * Check if Jirafeau has a restriction on the IP address for uploading.
+ * @return true if uploading is IP restricted, false otherwise.
+ */
+function jirafeau_upload_has_ip_restriction($cfg) {
+    return count($cfg['upload_ip']) > 0;
+}
+
+/**
+ * Test if visitor's IP is authorized to upload at all.
+ *
+ * @param $cfg configuration
+ * @param $challengedIp IP to be challenged
+ * @return true if IP is authorized, false otherwise.
+ */
+function jirafeau_challenge_upload_ip($cfg, $challengedIp)
+{
+    // If no IP address have been listed, allow upload from any IP
+    if (!jirafeau_upload_has_ip_restriction($cfg)) {
+        return true;
+    }
+    return jirafeau_challenge_ip($cfg['upload_ip'], $challengedIp);
+}
+
+/**
+ * Test if visitor's IP is authorized to upload without a password.
+ *
+ * @param $cfg configuration
+ * @param $challengedIp IP to be challenged
+ * @return true if IP is authorized, false otherwise.
+ */
+function jirafeau_challenge_upload_ip_without_password($cfg, $challengedIp)
+{
+    return jirafeau_challenge_ip($cfg['upload_ip_nopassword'], $challengedIp);
 }
 
 /**
