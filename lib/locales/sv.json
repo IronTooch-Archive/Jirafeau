@@ -23,7 +23,7 @@
     "UP_PSW": "Uppladdningslösenord",
     "2_BIG": "Filen är för stor",
     "FILE_LIM": "Filstorlek är begränsat till",
-    "FILE_DIR_W": "Filkatalogen är inte skrivbar",
+    "FILE_DIR_W": "Filkatalogen är inte skrivbar!",
     "LINK_DIR_W": "Länkkatalogen är inte skrivbar",
     "ASYNC_DIR_W": "Katalogen för asynkron överföring är inte skrivbar!",
     "INSTALL_SCRIPT_HERE": "Installationsskriptet är fortfarande kvar",
