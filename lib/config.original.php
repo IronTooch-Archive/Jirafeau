@@ -36,6 +36,7 @@ $cfg['var_root'] = '';
 /* Language - choice between 'auto' or any language located in the /lib/locales/ folder.
  * The mode »auto« will cause the script to detect the user's browser information
  * and offer a matching language, and use »en« if it is not available.
+ * Forcing to a specific lang lightly reduce lang computation.
  */
 $cfg['lang'] = 'auto';
 

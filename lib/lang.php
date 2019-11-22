@@ -19,26 +19,48 @@
 
 function t($string_id)
 {
-    $r = t_in($string_id, t_select_lang());
-    if ($r === false || $r === "") {
-        $r = t_in($string_id, "en");
-        if ($r === false) {
-            return "FIX ME: " . $string_id;
+    $lang_config = $GLOBALS['cfg']['lang'];
+    if ($lang_config != "auto") {
+        $r = t_in($string_id, $lang_config);
+        if ($r === false || $r === "") {
+            return "FIX ME";
+        }
+        return $r;
+    }
+
+    $visitor_langs = t_visitor_langs();
+    foreach ($visitor_langs as $lang) {
+        $r = t_in($string_id, $lang);
+        if ($r === false || $r === "") {
+            continue;
+        } else {
+            return $r;
         }
     }
-    return $r;
+    return "FIX ME";
 }
 
-function t_select_lang() {
-    $cfg = $GLOBALS['cfg'];
-    if (strcmp($cfg['lang'], 'auto') != 0) {
-        return $cfg['lang'];
+function t_visitor_langs() {
+    $visitor_langs = t_parse_accept_language();
+    array_push($visitor_langs, "en");
+    return $visitor_langs;
+}
+
+function t_parse_accept_language() {
+    if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+        return [];
     }
-    else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    } else {
-        return "en";
+    // Example: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
+    $langs = [];
+    $cols = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    foreach ($cols as $i => $semicols) {
+        $lang = explode(';', $semicols);
+        if (count($lang) === 0) {
+            continue;
+        }
+        array_push($langs, $lang[0]);
     }
+    return $langs;
 }
 
 function t_in($string_id, $lang) {
@@ -53,7 +75,11 @@ function t_in($string_id, $lang) {
 }
 
 function t_get_raw_json($lang) {
-    $p = JIRAFEAU_ROOT . "lib/locales/$lang.json";
+    $filename = str_replace("-", "_", $lang);
+    if (preg_match('/[^A-Za-z_\w]/', $input)) {
+        return false;
+    }
+    $p = JIRAFEAU_ROOT . "lib/locales/$filename.json";
     if (!file_exists($p)) {
         return false;
     }
@@ -74,9 +100,19 @@ function t_get_json($lang) {
 }
 
 function json_lang_generator($lang) {
-    $r = "";
+    $r = false;
     if ($lang === null) {
-        $r = t_get_raw_json(t_select_lang());
+        $lang_config = $GLOBALS['cfg']['lang'];
+        if ($lang_config != "auto") {
+            $r = t_get_raw_json($lang_config);
+        } else {
+            foreach(t_visitor_langs() as $lang) {
+                $r = t_get_raw_json($lang);
+                if (!($r === false)) {
+                    break;
+                }
+            }
+        }
     } else {
         $r = t_get_raw_json($lang);
     }
