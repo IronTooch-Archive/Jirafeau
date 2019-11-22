@@ -76,7 +76,7 @@ function t_in($string_id, $lang) {
 
 function t_get_raw_json($lang) {
     $filename = str_replace("-", "_", $lang);
-    if (preg_match('/[^A-Za-z_\w]/', $input)) {
+    if (preg_match('/[^A-Za-z_\w]/', $filename)) {
         return false;
     }
     $p = JIRAFEAU_ROOT . "lib/locales/$filename.json";
