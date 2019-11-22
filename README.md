@@ -128,10 +128,11 @@ find files -type f ! -name "*_count" | while read f; do bn="$(basename "$f")"; d
 find links -type f | while read link; do bn="$(basename "$link")"; mkdir "links/$bn"; mv "$link" "links/$bn/"; done; find links -maxdepth 1 -type d -iname "?" -exec rm -rf {} \;
 ```
 
-### From 4.0.0 to 4.1.0
+### From 4.0.0 to 4.1.1
 
 There is nothing special to do to update from/to the following versions:
 - 4.0.0 -> 4.1.0
+- 4.1.0 -> 4.1.1
 
 ### Troubleshooting
 
@@ -474,4 +475,8 @@ The very first version of Jirafeau after the fork of Jyraphe.
 - Add better support for Accept-Language
 - Cosmetic fixes
 - More languages supported and language fixes
+
+## Version 4.1.1
+
+- Fix lang sanity check
 

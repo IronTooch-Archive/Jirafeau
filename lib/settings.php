@@ -33,7 +33,7 @@ if (file_exists(JIRAFEAU_ROOT . 'lib/config.local.php')) {
 
 /* Jirafeau package */
 define('JIRAFEAU_PACKAGE', 'Jirafeau');
-define('JIRAFEAU_VERSION', '4.1.0');
+define('JIRAFEAU_VERSION', '4.1.1');
 
 /* Directories. */
 define('VAR_FILES', $cfg['var_root'] . 'files/');
