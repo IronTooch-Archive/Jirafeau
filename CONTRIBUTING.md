@@ -90,6 +90,7 @@ Quick walktrough:
 
 * Compare the [»next-release« branch to »master«](https://gitlab.com/mojo42/Jirafeau/compare/master...next-release)
 * Add a list of noteworthy features and bugfixes to the README
+* Fill upgrade procedure in README
 * Change the version, using [semantic versioning](http://semver.org/), in ```settings.php```
 * Merge »next-release« branch to »master«
 * Update the demo page
