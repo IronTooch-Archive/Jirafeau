@@ -98,7 +98,7 @@ Installation steps:
 1. The "Terms of Service" text file changed
    * To reuse previous changes to the ToS, move the old ```/tos_text.php``` file to ```/lib/tos.local.txt``` and remove all HTML und PHP Tags, leaving a regular text file
 
-### from version 2.0.0 to 3.4.1
+### From version 2.0.0 to 3.4.1
 
 There is nothing special to do to update from/to the following versions:
 - 2.0.0 -> 3.0.0
@@ -127,6 +127,11 @@ find files -type f ! -name "*_count" | while read f; do bn="$(basename "$f")"; d
 # Migrate links folder
 find links -type f | while read link; do bn="$(basename "$link")"; mkdir "links/$bn"; mv "$link" "links/$bn/"; done; find links -maxdepth 1 -type d -iname "?" -exec rm -rf {} \;
 ```
+
+### From 4.0.0 to 4.1.0
+
+There is nothing special to do to update from/to the following versions:
+- 4.0.0 -> 4.1.0
 
 ### Troubleshooting
 
@@ -460,3 +465,13 @@ The very first version of Jirafeau after the fork of Jyraphe.
 - Bugfix with LibreJS
 - Other minor bug fixes
 - More languages supported
+
+## Version 4.1.0
+
+- Fix upload password and allowed ip (#201)
+- Code refactorisation of IP checking
+- Fix expiration dates
+- Add better support for Accept-Language
+- Cosmetic fixes
+- More languages supported and language fixes
+
