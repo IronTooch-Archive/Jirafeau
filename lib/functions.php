@@ -343,22 +343,30 @@ function jirafeau_hash_file($method, $file_path)
  */
 function jirafeau_md5_outside($file_path)
 {
-    $size = filesize($file_path);
-    if ($size === false) {
-        $size = 0;
-    }
+    $out = false;
     $handle = fopen($file_path, "r");
     if ($handle === false) {
         return false;
     }
+    $size = filesize($file_path);
+    if ($size === false) {
+        goto err;
+    }
     $first = fread($handle, 64);
     if ($first === false) {
-        return false;
+        goto err;
     }
-    fseek($handle, $size < 64 ? 0 : $size - 64);
+    if (fseek($handle, $size < 64 ? 0 : $size - 64) == -1) {
+        goto err;
+    }
     $last = fread($handle, 64);
+    if ($last === false) {
+        goto err;
+    }
+    $out = md5($first . $last . $size);
+    err:
     fclose($handle);
-    return md5($first . $last . $size);
+    return $out;
 }
 
 /**
