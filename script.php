@@ -127,9 +127,10 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
     }
 
     $res = jirafeau_upload($_FILES['file'],
-                            isset($_POST['one_time_download']),
-                            $key, $time, get_ip_address($cfg),
-                            $cfg['enable_crypt'], $cfg['link_name_length']);
+                           isset($_POST['one_time_download']),
+                           $key, $time, get_ip_address($cfg),
+                           $cfg['enable_crypt'], $cfg['link_name_length'],
+                           $cfg['file_hash']);
 
     if (empty($res) || $res['error']['has_error']) {
         echo 'Error 6 ' . $res['error']['why'];
@@ -466,7 +467,7 @@ elseif (isset($_GET['end_async'])) {
         || !isset($_POST['code'])) {
         echo 'Error 24';
     } else {
-        echo jirafeau_async_end($_POST['ref'], $_POST['code'], $cfg['enable_crypt'], $cfg['link_name_length']);
+        echo jirafeau_async_end($_POST['ref'], $_POST['code'], $cfg['enable_crypt'], $cfg['link_name_length'], $cfg['file_hash']);
     }
 } else {
     echo 'Error 25';

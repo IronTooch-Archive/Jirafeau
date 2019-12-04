@@ -334,9 +334,11 @@ If someone use his/her delete link or an admin cleans expired links, this will d
 
 When the counter falls to zero, the file is destroyed.
 
+In order to know if a newly uploaded file already exist, Jirafeau will hash the file using md5 by default but other methods are available (see `file_hash` documentation in `lib/config.original.php`).
+
 ### What is the difference between "delete link" and "delete file and links" in admin interface?
 
-As explained in the previous question, files with the same md5 hash are not duplicated and a reference counter stores the number of links pointing to a single file.
+As explained in the previous question, files with the same hash are not duplicated and a reference counter stores the number of links pointing to a single file.
 So:
 - The button "delete link" will delete the reference to the file but might not destroy the file.
 - The button "delete file and links" will delete all references pointing to the file and will destroy the file.

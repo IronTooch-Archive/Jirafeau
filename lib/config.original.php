@@ -147,6 +147,16 @@ $cfg['maximal_upload_size'] = 0;
  */
 $cfg['proxy_ip'] = array();
 
+/* File hash
+ * In order to make file deduplication work, files can be hashed through different methods.
+ * By default, files are hashed through md5 but other methods are available.
+ * Possible values are 'md5' and 'md5_outside'.
+ * With 'md5' option, the whole file is hashed through md5. This is the default.
+ * With 'md5_outside', md5 is used to hash the first part of the file, the last part of the file
+ * and the file's size. This method is fast for large files but cannot be perfect.
+ */
+$cfg['file_hash'] = 'md5';
+
 /* Required flag to test if the installation is already installed
  * or needs to start the installation script
  */

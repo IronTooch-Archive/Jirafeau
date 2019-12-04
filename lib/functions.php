@@ -319,6 +319,48 @@ function jirafeau_delete_file($hash)
     return $count;
 }
 
+
+/** hash file's content
+ * @param $method hash method, see 'file_hash' option. 'md5' or 'md5_outside'.
+ * @param $file_path file to hash
+ * @returns hash string
+ */
+function jirafeau_hash_file($method, $file_path)
+{
+    switch ($method) {
+        case 'md5_outside':
+            return jirafeau_md5_outside($file_path);
+        case 'md5':
+            return md5_file($file_path);
+    }
+    return md5_file($file_path);
+}
+
+/** hash part of file: start, end and size.
+ * This is a partial file hash, faster but weaker.
+ * @param $file_path file to hash
+ * @returns hash string
+ */
+function jirafeau_md5_outside($file_path)
+{
+    $size = filesize($file_path);
+    if ($size === false) {
+        $size = 0;
+    }
+    $handle = fopen($file_path, "r");
+    if ($handle === false) {
+        return false;
+    }
+    $first = fread($handle, 64);
+    if ($first === false) {
+        return false;
+    }
+    fseek($handle, $size < 64 ? 0 : $size - 64);
+    $last = fread($handle, 64);
+    fclose($handle);
+    return md5($first . $last . $size);
+}
+
 /**
  * handles an uploaded file
  * @param $file the file struct given by $_FILE[]
@@ -333,7 +375,7 @@ function jirafeau_delete_file($hash)
  *   'link' => the link name of the uploaded file
  *   'delete_link' => the link code to delete file
  */
-function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $link_name_length)
+function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $link_name_length, $file_hash_method)
 {
     if (empty($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
         return (array(
@@ -361,7 +403,7 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
     }
 
     /* file informations */
-    $hash = md5_file($file['tmp_name']);
+    $hash = jirafeau_hash_file($file_hash_method, $file['tmp_name']);
     $name = str_replace(NL, '', trim($file['name']));
     $mime_type = $file['type'];
     $size = $file['size'];
@@ -893,7 +935,7 @@ function jirafeau_async_push($ref, $data, $code, $max_file_size)
   * @param $link_name_length link name length
   * @return a string containing the download reference followed by a delete code or the string 'Error'
   */
-function jirafeau_async_end($ref, $code, $crypt, $link_name_length)
+function jirafeau_async_end($ref, $code, $crypt, $link_name_length, $file_hash_method)
 {
     /* Get async infos. */
     $a = jirafeau_get_async_ref($ref);
@@ -917,7 +959,7 @@ function jirafeau_async_end($ref, $code, $crypt, $link_name_length)
         }
     }
 
-    $hash = md5_file($p);
+    $hash = jirafeau_hash_file($file_hash_method, $p);
     $size = filesize($p);
     $np = s2p($hash);
     $delete_link_code = jirafeau_gen_random(5);
