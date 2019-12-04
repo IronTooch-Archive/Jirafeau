@@ -73,8 +73,8 @@ if (isset($_GET['p']) && !empty($_GET['p'])) {
     $do_preview = true;
 }
 
-$p = s2p($link['md5']);
-if (!file_exists(VAR_FILES . $p . $link['md5'])) {
+$p = s2p($link['hash']);
+if (!file_exists(VAR_FILES . $p . $link['hash'])) {
     jirafeau_delete_link($link_name);
     require(JIRAFEAU_ROOT.'lib/template/header.php');
     echo '<div class="error"><p>'.t('FILE_NOT_AVAIL').
@@ -238,19 +238,21 @@ if (!jirafeau_is_viewable($link['mime_type']) || !$cfg['preview'] || $do_downloa
     header('Content-Disposition: filename="' . $link['file_name'] . '"');
 }
 header('Content-Type: ' . $link['mime_type']);
-header('Content-MD5: ' . hex_to_base64($link['md5']));
+if ($cfg['file_hash'] == "md5") {
+    header('Content-MD5: ' . hex_to_base64($link['hash']));
+}
 
 /* Read encrypted file. */
 if ($link['crypted']) {
     /* Init module */
     $m = mcrypt_module_open('rijndael-256', '', 'ofb', '');
     /* Extract key and iv. */
-    $md5_key = md5($crypt_key);
-    $iv = jirafeau_crypt_create_iv($md5_key, mcrypt_enc_get_iv_size($m));
+    $hash_key = md5($crypt_key);
+    $iv = jirafeau_crypt_create_iv($hash_key, mcrypt_enc_get_iv_size($m));
     /* Init module. */
-    mcrypt_generic_init($m, $md5_key, $iv);
+    mcrypt_generic_init($m, $hash_key, $iv);
     /* Decrypt file. */
-    $r = fopen(VAR_FILES . $p . $link['md5'], 'r');
+    $r = fopen(VAR_FILES . $p . $link['hash'], 'r');
     while (!feof($r)) {
         $dec = mdecrypt_generic($m, fread($r, 1024));
         print $dec;
@@ -263,7 +265,7 @@ if ($link['crypted']) {
 }
 /* Read file. */
 else {
-    $r = fopen(VAR_FILES . $p . $link['md5'], 'r');
+    $r = fopen(VAR_FILES . $p . $link['hash'], 'r');
     while (!feof($r)) {
         print fread($r, 1024);
         ob_flush();

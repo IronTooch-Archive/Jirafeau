@@ -159,10 +159,10 @@ function jirafeau_clean_rm_link($link)
     }
 }
 
-function jirafeau_clean_rm_file($md5)
+function jirafeau_clean_rm_file($hash)
 {
-    $p = s2p("$md5");
-    $f = VAR_FILES . $p . $md5;
+    $p = s2p("$hash");
+    $f = VAR_FILES . $p . $hash;
     if (file_exists($f) && is_file($f)) {
         unlink($f);
     }
@@ -261,31 +261,31 @@ function jirafeau_delete_link($link)
 
     jirafeau_clean_rm_link($link);
 
-    $md5 = $l['md5'];
-    $p = s2p("$md5");
+    $hash = $l['hash'];
+    $p = s2p("$hash");
 
     $counter = 1;
-    if (file_exists(VAR_FILES . $p . $md5. '_count')) {
-        $content = file(VAR_FILES . $p . $md5. '_count');
+    if (file_exists(VAR_FILES . $p . $hash. '_count')) {
+        $content = file(VAR_FILES . $p . $hash. '_count');
         $counter = trim($content[0]);
     }
     $counter--;
 
     if ($counter >= 1) {
-        $handle = fopen(VAR_FILES . $p . $md5. '_count', 'w');
+        $handle = fopen(VAR_FILES . $p . $hash. '_count', 'w');
         fwrite($handle, $counter);
         fclose($handle);
     }
 
     if ($counter == 0) {
-        jirafeau_clean_rm_file($md5);
+        jirafeau_clean_rm_file($hash);
     }
 }
 
 /**
  * Delete a file and it's links.
  */
-function jirafeau_delete_file($md5)
+function jirafeau_delete_file($hash)
 {
     $count = 0;
     /* Get all links files. */
@@ -308,14 +308,14 @@ function jirafeau_delete_file($md5)
                 if (!count($l)) {
                     continue;
                 }
-                if ($l['md5'] == $md5) {
+                if ($l['hash'] == $hash) {
                     $count++;
                     jirafeau_delete_link($node);
                 }
             }
         }
     }
-    jirafeau_clean_rm_file($md5);
+    jirafeau_clean_rm_file($hash);
     return $count;
 }
 
@@ -361,18 +361,18 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
     }
 
     /* file informations */
-    $md5 = md5_file($file['tmp_name']);
+    $hash = md5_file($file['tmp_name']);
     $name = str_replace(NL, '', trim($file['name']));
     $mime_type = $file['type'];
     $size = $file['size'];
 
     /* does file already exist ? */
     $rc = false;
-    $p = s2p("$md5");
-    if (file_exists(VAR_FILES . $p .  $md5)) {
+    $p = s2p("$hash");
+    if (file_exists(VAR_FILES . $p .  $hash)) {
         $rc = unlink($file['tmp_name']);
     } elseif ((file_exists(VAR_FILES . $p) || @mkdir(VAR_FILES . $p, 0755, true))
-            && move_uploaded_file($file['tmp_name'], VAR_FILES . $p . $md5)) {
+            && move_uploaded_file($file['tmp_name'], VAR_FILES . $p . $hash)) {
         $rc = true;
     }
     if (!$rc) {
@@ -386,47 +386,47 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
 
     /* Increment or create count file. */
     $counter = 0;
-    if (file_exists(VAR_FILES . $p . $md5 . '_count')) {
-        $content = file(VAR_FILES . $p . $md5. '_count');
+    if (file_exists(VAR_FILES . $p . $hash . '_count')) {
+        $content = file(VAR_FILES . $p . $hash. '_count');
         $counter = trim($content[0]);
     }
     $counter++;
-    $handle = fopen(VAR_FILES . $p . $md5. '_count', 'w');
+    $handle = fopen(VAR_FILES . $p . $hash. '_count', 'w');
     fwrite($handle, $counter);
     fclose($handle);
 
     /* Create delete code. */
     $delete_link_code = jirafeau_gen_random(5);
 
-    /* md5 password or empty. */
+    /* hash password or empty. */
     $password = '';
     if (!empty($key)) {
         $password = md5($key);
     }
 
     /* create link file */
-    $link_tmp_name =  VAR_LINKS . $md5 . rand(0, 10000) . '.tmp';
+    $link_tmp_name =  VAR_LINKS . $hash . rand(0, 10000) . '.tmp';
     $handle = fopen($link_tmp_name, 'w');
     fwrite($handle,
             $name . NL. $mime_type . NL. $size . NL. $password . NL. $time .
-            NL . $md5. NL . ($one_time_download ? 'O' : 'R') . NL . time() .
+            NL . $hash. NL . ($one_time_download ? 'O' : 'R') . NL . time() .
             NL . $ip . NL. $delete_link_code . NL . ($crypted ? 'C' : 'O'));
     fclose($handle);
-    $md5_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
-    $l = s2p("$md5_link");
+    $hash_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
+    $l = s2p("$hash_link");
     if (!@mkdir(VAR_LINKS . $l, 0755, true) ||
-        !rename($link_tmp_name, VAR_LINKS . $l . $md5_link)) {
+        !rename($link_tmp_name, VAR_LINKS . $l . $hash_link)) {
         if (file_exists($link_tmp_name)) {
             unlink($link_tmp_name);
         }
 
         $counter--;
         if ($counter >= 1) {
-            $handle = fopen(VAR_FILES . $p . $md5. '_count', 'w');
+            $handle = fopen(VAR_FILES . $p . $hash. '_count', 'w');
             fwrite($handle, $counter);
             fclose($handle);
         } else {
-            jirafeau_clean_rm_file($md5_link);
+            jirafeau_clean_rm_file($hash_link);
         }
         return array(
                  'error' =>
@@ -436,7 +436,7 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
                  'delete_link' => '');
     }
     return array( 'error' => $noerr,
-                  'link' => $md5_link,
+                  'link' => $hash_link,
                   'delete_link' => $delete_link_code,
                   'crypt_key' => $crypt_key);
 }
@@ -538,7 +538,7 @@ function jirafeau_get_link($hash)
     $out['file_size'] = trim($c[2]);
     $out['key'] = trim($c[3], NL);
     $out['time'] = trim($c[4]);
-    $out['md5'] = trim($c[5]);
+    $out['hash'] = trim($c[5]);
     $out['onetime'] = trim($c[6]);
     $out['upload_date'] = trim($c[7]);
     $out['ip'] = trim($c[8]);
@@ -602,7 +602,7 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 if (!empty($name) && !@preg_match("/$name/i", jirafeau_escape($l['file_name']))) {
                     continue;
                 }
-                if (!empty($file_hash) && $file_hash != $l['md5']) {
+                if (!empty($file_hash) && $file_hash != $l['hash']) {
                     continue;
                 }
                 if (!empty($link_hash) && $link_hash != $node) {
@@ -641,7 +641,7 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 '</form>' .
                 '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "delete_file"/>' .
-                '<input type = "hidden" name = "md5" value = "' . $l['md5'] . '"/>' .
+                '<input type = "hidden" name = "hash" value = "' . $l['hash'] . '"/>' .
                 jirafeau_admin_csrf_field() .
                 '<input type = "submit" value = "' . t('DEL_FILE_LINKS') . '" />' .
                 '</form>' .
@@ -680,10 +680,10 @@ function jirafeau_admin_clean()
                 if (!count($l)) {
                     continue;
                 }
-                $p = s2p($l['md5']);
+                $p = s2p($l['hash']);
                 if ($l['time'] > 0 && $l['time'] < time() || // expired
-                    !file_exists(VAR_FILES . $p . $l['md5']) || // invalid
-                    !file_exists(VAR_FILES . $p . $l['md5'] . '_count')) { // invalid
+                    !file_exists(VAR_FILES . $p . $l['hash']) || // invalid
+                    !file_exists(VAR_FILES . $p . $l['hash'] . '_count')) { // invalid
                     jirafeau_delete_link($node);
                     $count++;
                 }
@@ -917,48 +917,48 @@ function jirafeau_async_end($ref, $code, $crypt, $link_name_length)
         }
     }
 
-    $md5 = md5_file($p);
+    $hash = md5_file($p);
     $size = filesize($p);
-    $np = s2p($md5);
+    $np = s2p($hash);
     $delete_link_code = jirafeau_gen_random(5);
 
     /* File already exist ? */
     if (!file_exists(VAR_FILES . $np)) {
         @mkdir(VAR_FILES . $np, 0755, true);
     }
-    if (!file_exists(VAR_FILES . $np . $md5)) {
-        rename($p, VAR_FILES . $np . $md5);
+    if (!file_exists(VAR_FILES . $np . $hash)) {
+        rename($p, VAR_FILES . $np . $hash);
     }
 
     /* Increment or create count file. */
     $counter = 0;
-    if (file_exists(VAR_FILES . $np . $md5 . '_count')) {
-        $content = file(VAR_FILES . $np . $md5. '_count');
+    if (file_exists(VAR_FILES . $np . $hash . '_count')) {
+        $content = file(VAR_FILES . $np . $hash. '_count');
         $counter = trim($content[0]);
     }
     $counter++;
-    $handle = fopen(VAR_FILES . $np . $md5. '_count', 'w');
+    $handle = fopen(VAR_FILES . $np . $hash. '_count', 'w');
     fwrite($handle, $counter);
     fclose($handle);
 
     /* Create link. */
-    $link_tmp_name =  VAR_LINKS . $md5 . rand(0, 10000) . '.tmp';
+    $link_tmp_name =  VAR_LINKS . $hash . rand(0, 10000) . '.tmp';
     $handle = fopen($link_tmp_name, 'w');
     fwrite($handle,
             $a['file_name'] . NL . $a['mime_type'] . NL . $size . NL .
-            $a['key'] . NL . $a['time'] . NL . $md5 . NL . $a['onetime'] . NL .
+            $a['key'] . NL . $a['time'] . NL . $hash . NL . $a['onetime'] . NL .
             time() . NL . $a['ip'] . NL . $delete_link_code . NL . ($crypted ? 'C' : 'O'));
     fclose($handle);
-    $md5_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
-    $l = s2p("$md5_link");
+    $hash_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
+    $l = s2p("$hash_link");
     if (!@mkdir(VAR_LINKS . $l, 0755, true) ||
-        !rename($link_tmp_name, VAR_LINKS . $l . $md5_link)) {
+        !rename($link_tmp_name, VAR_LINKS . $l . $hash_link)) {
         echo "Error";
     }
 
     /* Clean async upload. */
     jirafeau_async_delete($ref);
-    return $md5_link . NL . $delete_link_code . NL . urlencode($crypt_key);
+    return $hash_link . NL . $delete_link_code . NL . urlencode($crypt_key);
 }
 
 function jirafeau_crypt_create_iv($base, $size)
@@ -988,10 +988,10 @@ function jirafeau_encrypt_file($fp_src, $fp_dst)
     $m = mcrypt_module_open('rijndael-256', '', 'ofb', '');
     /* Generate key. */
     $crypt_key = jirafeau_gen_random(10);
-    $md5_key = md5($crypt_key);
-    $iv = jirafeau_crypt_create_iv($md5_key, mcrypt_enc_get_iv_size($m));
+    $hash_key = md5($crypt_key);
+    $iv = jirafeau_crypt_create_iv($hash_key, mcrypt_enc_get_iv_size($m));
     /* Init module. */
-    mcrypt_generic_init($m, $md5_key, $iv);
+    mcrypt_generic_init($m, $hash_key, $iv);
     /* Crypt file. */
     $r = fopen($fp_src, 'r');
     $w = fopen($fp_dst, 'c');
@@ -1027,8 +1027,8 @@ function jirafeau_decrypt_file($fp_src, $fp_dst, $k)
     $m = mcrypt_module_open('rijndael-256', '', 'ofb', '');
     /* Extract key and iv. */
     $crypt_key = $k;
-    $md5_key = md5($crypt_key);
-    $iv = jirafeau_crypt_create_iv($md5_key, mcrypt_enc_get_iv_size($m));
+    $hash_key = md5($crypt_key);
+    $iv = jirafeau_crypt_create_iv($hash_key, mcrypt_enc_get_iv_size($m));
     /* Decrypt file. */
     $r = fopen($fp_src, 'r');
     $w = fopen($fp_dst, 'c');

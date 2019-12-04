@@ -241,7 +241,7 @@ if (php_sapi_name() == "cli") {
           echo '<div class="message">' . NL;
           echo '<p>' . t('LINK_DELETED') . '</p></div>';
       } elseif (strcmp($_POST['action'], 'delete_file') == 0) {
-          $count = jirafeau_delete_file($_POST['md5']);
+          $count = jirafeau_delete_file($_POST['hash']);
           echo '<div class="message">' . NL;
           echo '<p>' . t('DELETED_LINKS') . ' : ' . $count . '</p></div>';
       } elseif (strcmp($_POST['action'], 'download') == 0) {
@@ -249,13 +249,13 @@ if (php_sapi_name() == "cli") {
           if (!count($l)) {
               return;
           }
-          $p = s2p($l['md5']);
+          $p = s2p($l['hash']);
           header('Content-Length: ' . $l['file_size']);
           header('Content-Type: ' . $l['mime_type']);
           header('Content-Disposition: attachment; filename="' .
                   $l['file_name'] . '"');
-          if (file_exists(VAR_FILES . $p . $l['md5'])) {
-              $r = fopen(VAR_FILES . $p . $l['md5'], 'r');
+          if (file_exists(VAR_FILES . $p . $l['hash'])) {
+              $r = fopen(VAR_FILES . $p . $l['hash'], 'r');
               while (!feof($r)) {
                   print fread($r, 1024);
                   ob_flush();

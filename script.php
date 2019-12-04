@@ -179,8 +179,8 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
         echo 'Error 10';
         exit;
     }
-    $p = s2p($link['md5']);
-    if (!file_exists(VAR_FILES . $p . $link['md5'])) {
+    $p = s2p($link['hash']);
+    if (!file_exists(VAR_FILES . $p . $link['hash'])) {
         echo 'Error 11';
         exit;
     }
@@ -191,7 +191,7 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
     header('Content-Disposition: attachment; filename="' .
             $link['file_name'] . '"');
 
-    $r = fopen(VAR_FILES . $p . $link['md5'], 'r');
+    $r = fopen(VAR_FILES . $p . $link['hash'], 'r');
     while (!feof($r)) {
         print fread($r, 1024);
         ob_flush();
