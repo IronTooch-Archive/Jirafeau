@@ -225,7 +225,7 @@ case 2:
         <td class = "field"><input type = "text" name = "web_root"
         id = "input_web_root" value = "<?php
         echo(empty($cfg['web_root']) ?
-          'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename(__FILE__),
+          $_SERVER['HTTP_HOST'] . str_replace(basename(__FILE__),
           '', $_SERVER['REQUEST_URI']) : $cfg['web_root']);
       ?>" size = "40" /></td>
         </tr> <tr> <td class = "info" colspan = "2"><?php
