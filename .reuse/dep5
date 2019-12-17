@@ -1,0 +1,16 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Jirafeau
+Upstream-Contact: Jérôme Jutteau <jerome@jutteau.fr>
+Source: https://gitlab.com/mojo42/Jirafeau
+
+Files: *.md *.txt
+Copyright: 2019 Jérôme Jutteau <jerome@jutteau.fr>
+License: GFDL-1.3-or-later
+
+Files: *.php Dockerfile *.conf *.json *.png *.ico *.svg *.sh *.yml *.yaml *.gitignore *.css *.ini
+Copyright: 2019 Jérôme Jutteau <jerome@jutteau.fr> and all Jirafeau contributors (https://gitlab.com/mojo42/Jirafeau)
+License: AGPL-3.0-or-later
+
+Files: lib/tos.original.txt
+Copyright: Open Source Initiative (https://opensource.org/)
+License: CC-BY-3.0

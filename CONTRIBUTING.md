@@ -81,6 +81,8 @@ Quick walktrough:
 * Fork the original repository, clone the own repository, add the original repository as upstream
 * Checkout »next-release« branch ```git checkout next-release```
 * Create a new branch on top of that one, e.g. »some-feature« ```git checkout -b some-feature```
+* Make your change
+* You may check if the project is still [REUSE Compliant](https://reuse.software/) by running `docker run -v $(pwd):/code --rm fsfe/reuse /bin/sh -c "cd /code && reuse lint"`
 * Commit changes → push → send merge request ```git add -A; git commit; git push``` MR via GitLab (link shown in console)
 * Feature is reviewed
   * MR accepted: Reviewer checks out »next-release« branch and cherry-picks the commit ```git checkout next-release; git cherry-pick be4369641; git push```
