@@ -321,7 +321,7 @@ function jirafeau_delete_file($hash)
 
 
 /** hash file's content
- * @param $method hash method, see 'file_hash' option. 'md5' or 'md5_outside'.
+ * @param $method hash method, see 'file_hash' option. Valid methods are 'md5', 'md5_outside' or 'random'
  * @param $file_path file to hash
  * @returns hash string
  */
@@ -332,6 +332,8 @@ function jirafeau_hash_file($method, $file_path)
             return jirafeau_md5_outside($file_path);
         case 'md5':
             return md5_file($file_path);
+        case 'random':
+            return jirafeau_gen_random(32);
     }
     return md5_file($file_path);
 }
