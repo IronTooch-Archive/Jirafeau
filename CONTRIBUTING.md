@@ -88,7 +88,7 @@ Quick walktrough:
 
 ## New Releases
 
-* If the release is not done for security purposes, freeze next-branch for at least week.
+* If the release is not done for security purposes: create a new issue and freeze next-release branch for at least week.
 * Compare the [»next-release« branch to »master«](https://gitlab.com/mojo42/Jirafeau/compare/master...next-release)
 * Add a list of noteworthy features and bugfixes to the README
 * Fill upgrade procedure in README
