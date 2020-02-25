@@ -569,6 +569,14 @@ function check_errors($cfg)
     if (!is_writable(VAR_ASYNC)) {
         add_error(t('ASYNC_DIR_W'), VAR_ASYNC);
     }
+
+    if ($cfg['enable_crypt'] && $cfg['litespeed_workaround']) {
+        add_error(t('INCOMPATIBLE_OPTIONS_W'), 'enable_crypt=true<br>litespeed_workaround=true');
+    }
+
+    if ($cfg['one_time_download'] && $cfg['litespeed_workaround']) {
+        add_error(t('INCOMPATIBLE_OPTIONS_W'), 'one_time_download=true<br>litespeed_workaround=true');
+    }
 }
 
 /**

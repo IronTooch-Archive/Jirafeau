@@ -1,4 +1,5 @@
 {
+    "INCOMPATIBLE_OPTIONS_W": "Följande inställningar är inkompatibla:",
     "NO_BROWSER_SUPPORT": "Din webbläsare verkar inte stödja HTML5, så max filstorlek är ",
     "PLURAL_ENDING": "er",
     "JI_WEB_RE": "Jirafeau, ditt filutrymme på nätet",

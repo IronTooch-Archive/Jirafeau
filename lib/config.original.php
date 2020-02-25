@@ -163,6 +163,19 @@ $cfg['proxy_ip'] = array();
  */
 $cfg['file_hash'] = 'md5';
 
+/* Work around that LiteSpeed truncates large files when downloading.
+ * Only for use with the LiteSpeed web server!
+ * An internal redirect is made using X-LiteSpeed-Location instead
+ * of streaming the file from PHP.
+ * Limitations:
+ *  - The Jirafeau files folder has to be placed under the document root and should be
+ *    protected from unauthorized access using rewrite rules.
+ *    See https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki:config:internal-redirect#protection_from_direct_access
+ *  - Incompatible with server side encryption.
+ *  - Incompatible with one time download.
+ */
+$cfg['litespeed_workaround'] = false;
+
 /* Required flag to test if the installation is already installed
  * or needs to start the installation script
  */

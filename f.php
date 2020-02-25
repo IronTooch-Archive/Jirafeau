@@ -241,9 +241,21 @@ header('Content-Type: ' . $link['mime_type']);
 if ($cfg['file_hash'] == "md5") {
     header('Content-MD5: ' . hex_to_base64($link['hash']));
 }
-
+if ($cfg['litespeed_workaround']) {
+    // Work around that LiteSpeed truncates large files.
+    // See https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki:config:internal-redirect
+    if ($_GET['litespeed_workaround'] == 'phase2') {
+        $file_web_path = preg_replace('#^' . $_SERVER['DOCUMENT_ROOT'] . '#', '', VAR_FILES);
+        header('X-LiteSpeed-Location: ' . $file_web_path . $p . $link['hash']);
+    } else {
+        // Since Content-Type isn't forwarded by LiteSpeed, first
+        // redirect to the same URL but append the file name.
+        header('Location: ' . $_SERVER['PHP_SELF'] . '/' . $link['file_name'] . '?' .
+               $_SERVER['QUERY_STRING'] . '&litespeed_workaround=phase2');
+    }
+}
 /* Read encrypted file. */
-if ($link['crypted']) {
+else if ($link['crypted']) {
     /* Init module */
     $m = mcrypt_module_open('rijndael-256', '', 'ofb', '');
     /* Extract key and iv. */
