@@ -558,6 +558,8 @@ function async_upload_end (code)
 
 function upload (max_size)
 {
+    var one_time_checkbox = document.getElementById('one_time_download');
+    var one_time = one_time_checkbox !== null ? one_time_checkbox.checked : false;
     if (check_html5_file_api ()
         && document.getElementById('file_select').files[0].size >= max_size)
     {
@@ -566,7 +568,7 @@ function upload (max_size)
             document.getElementById('file_select').files[0],
             document.getElementById('select_time').value,
             document.getElementById('input_key').value,
-            document.getElementById('one_time_download').checked,
+            one_time,
             document.getElementById('upload_password').value
             );
     }
@@ -576,7 +578,7 @@ function upload (max_size)
             document.getElementById('file_select').files[0],
             document.getElementById('select_time').value,
             document.getElementById('input_key').value,
-            document.getElementById('one_time_download').checked,
+            one_time,
             document.getElementById('upload_password').value
             );
     }

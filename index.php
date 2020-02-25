@@ -178,10 +178,12 @@ else {
 
     <div id="options">
         <table id="option_table">
-        <tr>
-        <td><?php echo t('ONE_TIME_DL'); ?>:</td>
-        <td><input type="checkbox" id="one_time_download" /></td>
-        </tr>
+        <?php
+        if ($cfg['one_time_download']) {
+            echo '<tr><td>' . t('ONE_TIME_DL') . ':</td>';
+            echo '<td><input type="checkbox" id="one_time_download" /></td></tr>';
+        }
+        ?>
         <tr>
         <td><label for="input_key"><?php echo t('PSW') . ':'; ?></label></td>
         <td><input type="password" name="key" id="input_key" /></td>

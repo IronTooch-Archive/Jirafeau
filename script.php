@@ -126,6 +126,12 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
         exit;
     }
 
+    // Check if one time download is enabled
+    if (!$cfg['one_time_download'] && isset($_POST['one_time_download'])) {
+        echo 'Error 26: One time download is disabled.';
+        exit;
+    }
+
     $res = jirafeau_upload($_FILES['file'],
                            isset($_POST['one_time_download']),
                            $key, $time, get_ip_address($cfg),
@@ -407,6 +413,12 @@ elseif (isset($_GET['init_async'])) {
     $key = '';
     if (isset($_POST['key'])) {
         $key = $_POST['key'];
+    }
+
+    // Check if one time download is enabled
+    if (!$cfg['one_time_download'] && isset($_POST['one_time_download'])) {
+        echo 'Error 26: One time download is disabled.';
+        exit;
     }
 
     $time = time();

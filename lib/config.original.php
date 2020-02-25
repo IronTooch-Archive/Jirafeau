@@ -133,6 +133,11 @@ $cfg['availabilities'] = array(
  */
 $cfg['availability_default'] = 'month';
 
+/* Give the uploading user the option to have the file
+ * deleted after the first download.
+ */
+$cfg['one_time_download'] = true;
+
 /* Set maximal upload size expressed in MB.
  * »0« means unlimited upload size.
  */
