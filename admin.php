@@ -161,6 +161,19 @@ if (php_sapi_name() == "cli") {
           </tr>
           </form>
           <form method="post">
+              <tr>
+                  <input type = "hidden" name = "action" value = "size"/>
+                  <?php echo jirafeau_admin_csrf_field() ?>
+                  <td class = "info">
+                      <?php echo t('SIZE_DATA'); ?>
+                  </td>
+                  <td></td>
+                  <td>
+                      <input type = "submit" value = "<?php echo t('SIZE'); ?>" />
+                  </td>
+              </tr>
+          </form>
+          <form method="post">
           <tr>
               <input type = "hidden" name = "action" value = "search_by_name"/>
               <?php echo jirafeau_admin_csrf_field() ?>
@@ -228,6 +241,12 @@ if (php_sapi_name() == "cli") {
           echo '<p>';
           echo t('CLEANED_FILES_CNT') . ' : ' . $total;
           echo '</p></div>';
+      } elseif (strcmp($_POST['action'], 'size') == 0) {
+          $size = jirafeau_dir_size($cfg['var_root']);
+          $human_size = jirafeau_human_size($size);
+          echo '<div class="message">' . NL;
+          echo '<p>' . t('SIZE_DATA') . ': ' . $human_size .'</p>';
+          echo '</div>';
       } elseif (strcmp($_POST['action'], 'list') == 0) {
           jirafeau_admin_list("", "", "");
       } elseif (strcmp($_POST['action'], 'search_by_name') == 0) {

@@ -1344,3 +1344,12 @@ function jirafeau_admin_csrf_field()
 {
     return "<input type='hidden' name='admin_csrf' value='". $_SESSION['admin_csrf'] . "'/>";
 }
+
+function jirafeau_dir_size($dir)
+{
+    $size = 0;
+    foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $entry) {
+        $size += is_file($entry) ? filesize($entry) : jirafeau_dir_size($entry);
+    }
+    return $size;
+}
