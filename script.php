@@ -229,6 +229,7 @@ url='<?php echo $cfg['web_root']; ?>' # Or set JIRAFEAU_URL.
 time='<?php echo $cfg['availability_default']; ?>' # Or set JIRAFEAU_TIME.
 one_time='' # Or set JIRAFEAU_ONE_TIME.
 curl='' # Or set JIRAFEAU_CURL_PATH.
+upload_password='' # Or set JIRAFEAU_UPLOAD_PASSWD
 # Config end
 
 if [ -n "$JIRAFEAU_PROXY" ]; then
@@ -249,6 +250,10 @@ fi
 
 if [ -n "$JIRAFEAU_ONE_TIME" ]; then
     one_time='1'
+fi
+
+if [ -n "$UPLOAD_PASSWD" ]; then
+    upload_password="$JIRAFEAU_UPLOAD_PASSWORD"
 fi
 
 if [ -z "$curl" ]; then
@@ -285,6 +290,7 @@ if [ -z "$2" ]; then
     echo "    JIRAFEAU_TIME : expiration time, eg. »minute«, »hour«, »day«, »week«, »month«, »quarter«, »year« or »none«"
     echo "    JIRAFEAU_ONE_TIME : self-destroy after first download, eg. »1« to enable or »« (empty) to disable"
     echo "    JIRAFEAU_CURL : alternative path to curl binary"
+    echo "    JIRAFEAU_UPLOAD_PASSWD : upload password"
 
     exit 0
 fi
@@ -296,6 +302,10 @@ fi
 options=''
 if [ -n "$one_time" ]; then
     options="$options -F one_time_download=1"
+fi
+
+f [ -n "$upload_password" ]; then
+    options="$options -F upload_password=$upload_password"
 fi
 
 password=''
