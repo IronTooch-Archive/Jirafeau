@@ -1,5 +1,5 @@
 {
-    "SIZE_DATA": "",
+    "SIZE_DATA": "Datastørrelse",
     "INCOMPATIBLE_OPTIONS_W": "",
     "NO_BROWSER_SUPPORT": "Det kan hende at nettleseren din ikke støtter HTML5, så største tillatte filstørrelse er ",
     "PLURAL_ENDING": "er",
@@ -25,8 +25,8 @@
     "UP_PSW": "Last opp passord",
     "2_BIG": "Fila er for stor",
     "FILE_LIM": "Filstørrelse begrenset til",
-    "FILE_DIR_W": "Filmappen er ikke skrivbar",
-    "LINK_DIR_W": "Lenkemappen er ikke skrivbar",
+    "FILE_DIR_W": "Filmappen er ikke skrivbar!",
+    "LINK_DIR_W": "Lenkemappen er ikke skrivbar!",
     "ASYNC_DIR_W": "Asynkmappen er ikke skrivbar!",
     "INSTALL_SCRIPT_HERE": "Installasjonsskriptet er der enda",
     "ERR_OCC": "En feil inntraff.",
