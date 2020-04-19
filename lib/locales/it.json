@@ -1,6 +1,6 @@
 {
-    "SIZE_DATA": "",
-    "INCOMPATIBLE_OPTIONS_W": "",
+    "SIZE_DATA": "Dimensione dei dati",
+    "INCOMPATIBLE_OPTIONS_W": "Le seguenti opzioni di configurazione sono incompatibili:",
     "NO_BROWSER_SUPPORT": "Il tuo browser potrebbe non supportare HTML5, quindi la dimensione massima del file è ",
     "PLURAL_ENDING": "",
     "ACCESS_KO": "Accesso negato",
