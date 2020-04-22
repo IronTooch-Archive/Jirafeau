@@ -1,6 +1,6 @@
 {
     "SIZE_DATA": "Datastørrelse",
-    "INCOMPATIBLE_OPTIONS_W": "",
+    "INCOMPATIBLE_OPTIONS_W": "Følgende oppsettsvalg er ikke kompatible:",
     "NO_BROWSER_SUPPORT": "Det kan hende at nettleseren din ikke støtter HTML5, så største tillatte filstørrelse er ",
     "PLURAL_ENDING": "er",
     "JI_WEB_RE": "Jirafeau, din vevfilpakkebrønn",
