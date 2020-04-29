@@ -1,6 +1,6 @@
 FROM php:7.3-fpm-alpine
 MAINTAINER "Jérôme Jutteau <mojo@jirafeau.net>"
-ARG USER_UID=0
+ARG USER_UID=2009
 
 # install base
 RUN apk update && \
