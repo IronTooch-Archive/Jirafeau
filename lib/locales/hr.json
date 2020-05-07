@@ -48,7 +48,7 @@
     "Term Of Service": "Uvjeti korištenja",
     "AUTO_DESTRUCT": "Upozorenje, ova datoteka će biti uništena nakon čitanja",
     "INTERNAL_ERROR_DEL": "Interna greška prilikom kreiranja datoteke.",
-    "CONF_AUTOGEN_COMMENT": "",
+    "CONF_AUTOGEN_COMMENT": "Ova je datoteka generirana postupkom instalacije. Može se urediti. Za razumijevanje dijelova instalacije, pogledaj config.original.php.",
     "CANNOT_CREATE_DIR": "Sljedeći direktorij se ne može stvoriti",
     "MANUAL_CREATE": "Ovaj se direktorij mora ručno stvoriti.",
     "DIR_NOT_W": "Sljedeći direktorij je zaštićen",
