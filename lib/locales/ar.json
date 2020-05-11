@@ -1,5 +1,5 @@
 {
-    "SIZE_DATA": "",
+    "SIZE_DATA": "حجم البيانات",
     "INCOMPATIBLE_OPTIONS_W": "",
     "NO_BROWSER_SUPPORT": "قد لا يدعم متصفحك HTML5، لذا فإن الحد الأقصى لحجم الملف هو ",
     "PLURAL_ENDING": "",
@@ -98,7 +98,7 @@
     "NOW_DOWNLOADING": "إنك بصدد تنزيل",
     "NOW_LOGOUT": "لقد خرجت من الحساب الآن",
     "MANUAL_CREATE": "يجب عليك إنشاء هذا المجلد يدوياً.",
-    "GIMME_W": "",
+    "GIMME_W": "يجب أن تمنح إذن الكتابة لخادم الويب على هذا المجلد.",
     "DAY": "يوم",
     "FILE": "ملف",
     "HOUR": "ساعة",
