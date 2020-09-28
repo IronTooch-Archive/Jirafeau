@@ -1,7 +1,7 @@
 {
-    "SIZE_DATA": "",
+    "SIZE_DATA": "Tamanho dos dados",
     "NO_BROWSER_SUPPORT": "O seu navegador pode não suportar HTML5, então o tamanho máximo do ficheiro é ",
-    "INCOMPATIBLE_OPTIONS_W": "",
+    "INCOMPATIBLE_OPTIONS_W": "As seguintes opções de configuração são incompatíveis:",
     "PLURAL_ENDING": "s",
     "ACCESS_KO": "Acesso negado",
     "ACTION": "Acção",
@@ -83,7 +83,7 @@
     "DIR_NOT_W": "O seguinte directório não permite escrita",
     "LINK_DIR_W": "O diretório da ligação não pode ser escrito.",
     "CONF_SOLUTION": "O ficheiro local de configuração não pode ser criado. Crie o ficheiro <code>lib/config.local.php</code> e atribua permissão de escrita ao servidor web (solução preferencial), ou atribua permissões de escrita ao servidor web no diretório <code>lib</code>.",
-    "CONF_SOLUTION_2": "O ficheiro local de configuração não consegue ser escrito pelo servidor web. Atribua permissão de escrita ao servidor web no ficheiro <code>lib/config.local.php</code>.",
+    "CONF_SOLUTION_2": "O ficheiro local de configuração não consegue ser escrito pelo servidor web. Atribua permissão de escrita ao servidor web no ficheiro '<code>lib/config.local.php</code>'.",
     "FILE_EXPIRED": "O limite de tempo para este ficheiro expirou.",
     "VALID_UNTIL": "Este ficheiro é válido até à seguinte data",
     "CONF_AUTOGEN_COMMENT": "Este ficheiro foi gerado durante o processo de instalação. Pode edita-lo. Por favor leia config.original.php para compreender os itens de configuração.",
