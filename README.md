@@ -72,7 +72,7 @@ Installation steps:
   - The script will redirect to you to a minimal installation wizard to set up all required options
   - All optional parameters may be set in ```lib/config.local.php```, take a look at ```lib/config.original.php``` to see all default values
 - B) Setup without the installation wizard (cli):
-  - Just copy ```config.original.php``` to ```config.local.php``` and customize it
+  - Just copy ```lib/config.original.php``` to ```lib/config.local.php``` and customize it
 
 ## Upgrade
 
@@ -143,7 +143,7 @@ If you have some troubles, consider the following cases
 
 ## Security
 
-```var``` directory contain all files and links. It is randomly named to limit access but you may add better protection to prevent un-authorized access to it.
+```var``` directory contains all files and links. It is randomly named to limit access but you may add better protection to prevent un-authorized access to it.
 You have several options:
 - Configure a ```.htaccess```
 - Move var folder to a place on your server which can't be directly accessed
