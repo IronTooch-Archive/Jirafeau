@@ -21,7 +21,7 @@
 - Add upload password capability in script options
 - Various bugfixes around retries and error management
 - Automatically lower chunk size sent to server refusing large chunks
-- Multiple lang fixes
+- Romanian lang support and other various lang support
 - Upgrade from 4.1.1: in-place upgrade
 
 # Version 4.1.1
