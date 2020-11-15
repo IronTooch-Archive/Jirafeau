@@ -623,17 +623,17 @@ function upload_time_estimation_speed_string()
     if (s <= 1000)
     {
         res = s.toString();
-        scale = "Bit/s";
+        scale = "B/s";
     }
     else if (s < 1000000)
     {
         res = Math.floor(s/100) / 10;
-        scale = "KBit/s";
+        scale = "KB/s";
     }
     else
     {
         res = Math.floor(s/100000) / 10;
-        scale = "Mbit/s";
+        scale = "MB/s";
     }
     if (res == 0)
         return '';
