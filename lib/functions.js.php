@@ -370,6 +370,10 @@ function classic_upload (file, time, password, one_time, upload_password)
 
             show_link (res[0], res[1], res[2], expiryDate);
         }
+        else
+        {
+            pop_failure ("<?php echo t("ERR_OCC"); ?>");
+        }
     }
     req.open ("POST", 'script.php' , true);
 
