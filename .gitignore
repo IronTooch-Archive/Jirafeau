@@ -5,3 +5,8 @@ var-*
 *._*
 /vendor
 .idea/
+
+# Ignore file starting with dot, but keep others
+.*
+!.gitlab-ci.yml
+!.gitignore
