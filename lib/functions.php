@@ -2,7 +2,7 @@
 /*
  *  Jirafeau, your web file repository
  *  Copyright (C) 2008  Julien "axolotl" BERNARD <axolotl@magieeternelle.org>
- *  Copyright (C) 2015  Jerome Jutteau <j.jutteau@gmail.com>
+ *  Copyright (C) 2015  Jerome Jutteau <jerome@jutteau.fr>
  *  Copyright (C) 2015  Nicola Spanti (RyDroid) <dev@nicola-spanti.info>
  *
  *  This program is free software: you can redistribute it and/or modify

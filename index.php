@@ -2,7 +2,7 @@
 /*
  *  Jirafeau, your web file repository
  *  Copyright (C) 2013
- *  Jerome Jutteau <j.jutteau@gmail.com>
+ *  Jerome Jutteau <jerome@jutteau.fr>
  *  Jimmy Beauvois <jimmy.beauvois@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify

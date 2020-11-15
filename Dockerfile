@@ -1,5 +1,5 @@
 FROM php:7.3-fpm-alpine
-MAINTAINER "Jérôme Jutteau <mojo@jirafeau.net>"
+MAINTAINER "Jérôme Jutteau <jerome@jutteau.fr>"
 ARG USER_UID=2009
 
 # install base
