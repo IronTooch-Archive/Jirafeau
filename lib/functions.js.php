@@ -501,10 +501,13 @@ function async_upload_push (code)
                 async_global_transfered = async_global_transfering;
                 async_upload_push (code);
             }
-            else if (req.status == 413) // Request Entity Too Large
+            else
             {
-                // lower async_global_max_size and retry
-                async_global_max_size = parseInt (async_global_max_size * 0.8);
+                if (req.status == 413) // Request Entity Too Large
+                {
+                    // lower async_global_max_size and retry
+                    async_global_max_size = parseInt (async_global_max_size * 0.8);
+                }
                 async_upload_push (async_global_last_code);
             }
         }
