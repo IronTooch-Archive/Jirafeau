@@ -10,6 +10,20 @@
 5. Follow the installation wizard, it should propose you the same data folder or even update automatically
 6. Check your ```/lib/config.local.php``` and compare it with the ```/lib/config.original.php``` to see if new configuration items are available
 
+# version 4.2.0
+
+- New file_hash option to eventually speed-up file identification process
+- one_time_download is now optional
+- Litespeed workaround for large files
+- Admin interface can compute data folder size
+- REUSE compliance test
+- multiple docker features: mcrypt support, daily cleanup, unprivilidged user
+- Add upload password capability in script options
+- Various bugfixes around retries and error management
+- Automatically lower chunk size sent to server refusing large chunks
+- Multiple lang fixes
+- Upgrade from 4.1.1: in-place upgrade
+
 # Version 4.1.1
 
 - Fix lang sanity check
