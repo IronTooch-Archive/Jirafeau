@@ -17,11 +17,8 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/*
- * This file permits to easyly script file sending, receiving, deleting, ...
- * If you don't want this feature, you can simply delete this file from your
- * web directory.
- */
+/* This file offer a kind of API for jirafeau. */
+
 define('JIRAFEAU_ROOT', dirname(__FILE__) . '/');
 
 require(JIRAFEAU_ROOT . 'lib/settings.php');
