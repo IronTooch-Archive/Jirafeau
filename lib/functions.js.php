@@ -398,6 +398,7 @@ var async_global_ref = '';
 var async_global_max_size = 0;
 var async_global_time;
 var async_global_transfering = 0;
+var async_global_last_code;
 
 function async_upload_start (max_size, file, time, password, one_time, upload_password)
 {
@@ -470,6 +471,7 @@ function async_upload_progress (e)
 
 function async_upload_push (code)
 {
+    async_global_last_code = code;
     if (async_global_transfered == async_global_file.size)
     {
         hide_upload_progression ();
@@ -482,27 +484,35 @@ function async_upload_push (code)
     req.addEventListener ("abort", pop_failure, false);
     req.onreadystatechange = function ()
     {
-        if (req.readyState == 4 && req.status == 200)
+        if (req.readyState == 4)
         {
-            var res = req.responseText;
-
-            if (/^Error/.test(res))
+            if (req.status == 200)
             {
-                pop_failure (res);
-                return;
-            }
+                var res = req.responseText;
 
-            res = res.split ("\n");
-            var code = res[0]
-            async_global_transfered = async_global_transfering;
-            async_upload_push (code);
+                if (/^Error/.test(res))
+                {
+                    pop_failure (res);
+                    return;
+                }
+
+                res = res.split ("\n");
+                var code = res[0]
+                async_global_transfered = async_global_transfering;
+                async_upload_push (code);
+            }
+            else if (req.status == 413) // Request Entity Too Large
+            {
+                // lower async_global_max_size and retry
+                async_global_max_size = parseInt (async_global_max_size * 0.8);
+                async_upload_push (async_global_last_code);
+            }
         }
     }
     req.open ("POST", 'script.php?push_async' , true);
 
-    var chunk_size = parseInt (async_global_max_size * 0.50);
     var start = async_global_transfered;
-    var end = start + chunk_size;
+    var end = start + async_global_max_size;
     if (end >= async_global_file.size)
         end = async_global_file.size;
     var blob = async_global_file.slice (start, end);
