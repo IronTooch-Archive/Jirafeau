@@ -577,8 +577,7 @@ function upload (max_size)
 {
     var one_time_checkbox = document.getElementById('one_time_download');
     var one_time = one_time_checkbox !== null ? one_time_checkbox.checked : false;
-    if (check_html5_file_api ()
-        && document.getElementById('file_select').files[0].size >= max_size)
+    if (check_html5_file_api ())
     {
         async_upload_start (
             max_size,
