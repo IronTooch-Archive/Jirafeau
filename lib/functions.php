@@ -1013,7 +1013,7 @@ function jirafeau_async_end($ref, $code, $crypt, $link_name_length, $file_hash_m
     $l = s2p("$hash_link");
     if (!@mkdir(VAR_LINKS . $l, 0755, true) ||
         !rename($link_tmp_name, VAR_LINKS . $l . $hash_link)) {
-        echo "Error";
+        return 'Error';
     }
 
     /* Clean async upload. */
