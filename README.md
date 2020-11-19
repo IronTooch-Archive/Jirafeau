@@ -80,6 +80,7 @@ If you have some troubles, consider the following cases
 
 - Check your ```/lib/config.local.php``` file and compare it with ```/lib/config.original.php```, the configuration syntax or a parameter may have changed
 - Check owner & permissions of your files
+- set `debug` option to `true` to check any warning or error
 
 ## Security
 

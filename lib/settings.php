@@ -29,6 +29,13 @@ if (file_exists(JIRAFEAU_ROOT . 'lib/config.local.php')) {
     unset($cfgOriginal);
 }
 
+// Setup debug mode
+error_reporting(0);
+if ($cfg['debug'] === true)
+{
+    error_reporting(E_ALL);
+}
+
 // Set constants
 
 /* Jirafeau package */

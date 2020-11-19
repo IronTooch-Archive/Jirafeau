@@ -180,3 +180,10 @@ $cfg['litespeed_workaround'] = false;
  * or needs to start the installation script
  */
 $cfg['installation_done'] = false;
+
+/* Enable this debug flag to allow eventual PHP error reporting.
+ * This is disabled by default permission misconfiguration might generate warnings or errors.
+ * Those warnings can break Jirafeau and also show path to var- folder in debug messages.
+ * var- folder should kept secret and accessing it may lead to data leak if unprotected.
+ */
+$cfg['debug'] = false;
