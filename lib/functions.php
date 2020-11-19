@@ -866,6 +866,10 @@ function jirafeau_async_init($filename, $type, $one_time, $key, $time, $ip)
         return;
     }
 
+    /* touch empty data file */
+    $w_path = $p . $ref . '_data';
+    touch($w_path);
+
     /* md5 password or empty */
     $password = '';
     if (!empty($key)) {
