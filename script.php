@@ -301,7 +301,7 @@ if [ -n "$one_time" ]; then
     options="$options -F one_time_download=1"
 fi
 
-f [ -n "$upload_password" ]; then
+if [ -n "$upload_password" ]; then
     options="$options -F upload_password=$upload_password"
 fi
 
