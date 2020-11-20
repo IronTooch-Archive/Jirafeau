@@ -287,3 +287,7 @@ So:
 ### How to contact someone from Jirafeau?
 
 Feel free to create an issue if you found a bug.
+
+### Can I buy you a coffee?
+
+You can [drop few bucks](https://www.paypal.com/paypalme/jeromejutteau) to help the [demo web site](https://jirafeau.net) to stay alive.
