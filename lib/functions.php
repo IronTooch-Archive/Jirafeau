@@ -627,15 +627,9 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
         echo t('LS_FILES');
     }
     echo '</legend>';
-    echo '<table border="1" width="1100">';
+    echo '<table>';
     echo '<tr>';
-    echo '<th>' . t('FILENAME') . '</th>';
-    echo '<th>' . t('TYPE') . '</th>';
-    echo '<th>' . t('SIZE') . '</th>';
-    echo '<th>' . t('EXPIRE') . '</th>';
-    echo '<th>' . t('ONETIME') . '</th>';
-    echo '<th>' . t('UPLOAD_DATE') . '</th>';
-    echo '<th>' . t('ORIGIN') . '</th>';
+    echo '<th></th>';
     echo '<th>' . t('ACTION') . '</th>';
     echo '</tr>';
 
@@ -672,22 +666,15 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 echo '<tr>';
                 echo '<td>' .
                 '<strong><a id="upload_link" href="f.php?h='. jirafeau_escape($node) .'" title="' .
-                    t('DL_PAGE') . '">' . jirafeau_escape($l['file_name']) . '</a></strong>';
-                echo '</td>';
-                echo '<td>' . jirafeau_escape($l['mime_type']) . '</td>';
-                echo '<td>' . jirafeau_human_size($l['file_size']) . '</td>';
-                echo '<td>' . ($l['time'] == -1 ? '∞' : jirafeau_get_datetimefield($l['time'])) . '</td>';
-                echo '<td>';
-                if ($l['onetime'] == 'O') {
-                    echo 'Y';
-                } else {
-                    echo 'N';
-                }
-                echo '</td>';
-                echo '<td>' . jirafeau_get_datetimefield($l['upload_date']) . '</td>';
-                echo '<td>' . $l['ip'] . '</td>';
-                echo '<td>' .
-                '<form method="post">' .
+                    t('DL_PAGE') . '">' . jirafeau_escape($l['file_name']) . '</a></strong><br/>';
+                echo t('TYPE') . ': ' . jirafeau_escape($l['mime_type']) . '<br/>';
+                echo t('SIZE') . ': ' . jirafeau_human_size($l['file_size']) . '<br>';
+                echo t('EXPIRE') . ': ' . ($l['time'] == -1 ? '∞' : jirafeau_get_datetimefield($l['time'])) . '<br/>';
+                echo t('ONETIME') . ': ' . ($l['onetime'] == 'O' ? 'Yes' : 'No') . '<br/>';
+                echo t('UPLOAD_DATE') . ': ' . jirafeau_get_datetimefield($l['upload_date']) . '<br/>';
+                echo t('ORIGIN') . ': ' . $l['ip'] . '<br/>';
+                echo '</td><td>';
+                echo '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "download"/>' .
                 '<input type = "hidden" name = "link" value = "' . $node . '"/>' .
                 jirafeau_admin_csrf_field() .
