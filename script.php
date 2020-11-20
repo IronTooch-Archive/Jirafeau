@@ -198,7 +198,6 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
     $r = fopen(VAR_FILES . $p . $link['hash'], 'r');
     while (!feof($r)) {
         print fread($r, 1024);
-        ob_flush();
     }
     fclose($r);
 

@@ -277,7 +277,6 @@ if (php_sapi_name() == "cli") {
               $r = fopen(VAR_FILES . $p . $l['hash'], 'r');
               while (!feof($r)) {
                   print fread($r, 1024);
-                  ob_flush();
               }
               fclose($r);
           }

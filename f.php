@@ -268,7 +268,6 @@ else if ($link['crypted']) {
     while (!feof($r)) {
         $dec = mdecrypt_generic($m, fread($r, 1024));
         print $dec;
-        ob_flush();
     }
     fclose($r);
     /* Cleanup. */
@@ -280,7 +279,6 @@ else {
     $r = fopen(VAR_FILES . $p . $link['hash'], 'r');
     while (!feof($r)) {
         print fread($r, 1024);
-        ob_flush();
     }
     fclose($r);
 }
