@@ -2,9 +2,9 @@
 
 Welcome to the official Jirafeau project, an [Open-Source software](https://en.wikipedia.org/wiki/Open-source_software).
 
-Jirafeau allows your to "one-click-filesharing". It makes possible to upload a file in a simple way and give an unique link to it.
+Jirafeau is a "one-click-filesharing": Select your file, upload, share a link. That's it.
 
-A demonstration of the latest version is available on [jirafeau.net](https://jirafeau.net/).
+See [jirafeau.net](https://jirafeau.net/) for a demo.
 
 ![Screenshot1](http://i.imgur.com/TPjh48P.png)
 
