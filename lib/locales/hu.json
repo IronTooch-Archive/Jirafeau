@@ -74,7 +74,6 @@
     "NO_ADMIN": "Az admin felület nem engedélyezett.",
     "FILE_404": "Nem találjuk ezt a fájlt",
     "NO_ADMIN_AUTH": "Nem léptél be adminként.",
-    "Term Of Service": "Szolgáltatási feltételek",
     "ASYNC_DIR_W": "Az async mappa nem írható!",
     "BASE_ADDR_INFO": "Az alap-Jirafeau címe - az URL első fele, az utolsó per-ig (hash), de azt beleértve. Például: \"http://www.example.com/\". El ne felejtsd a lezáró per-t!",
     "DATA_DIR_EXPLAINATION": "Az adatmappa, ahol a fájlokat és a metaadatokat tároljuk. Javasolt, hogy a weboldalon kívül legyen, vagy legalább korlátozd az elérést. Ne feledd a záró hash-t (per jelet)!",

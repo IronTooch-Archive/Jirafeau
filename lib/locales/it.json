@@ -74,7 +74,6 @@
     "NO_ADMIN": "Spiacente, l'interfaccia di amministrazione non è abilitata.",
     "FILE_404": "Spiacente, il file richiesto non è stato trovato",
     "NO_ADMIN_AUTH": "Spiacente, non hai effettuato l'accesso all'interfaccia di amministrazione.",
-    "Term Of Service": "Termini del Servizio",
     "ASYNC_DIR_W": "La cartella async è non scrivibile.",
     "BASE_ADDR_INFO": "L'indirizzo base di Jirafeau è la prima parte della URL, fino (e incluso) la barra finale. Per esempio:\n\"http://www.example.com/\". Non dimenticare la barra finale!",
     "DATA_DIR_EXPLAINATION": "La cartella data è dove i vostri file e le informazioni su di essi sono archiviate. Dovrebbe essere posizionata al di fuori del sito web, o quantomeno si dovrebbe restringere l'accesso a questa cartella. Non dimenticare lo slash finale!",

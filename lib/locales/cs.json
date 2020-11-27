@@ -74,7 +74,6 @@
     "NO_ADMIN": "Omlouváme se, administrační rozhraní není povoleno.",
     "FILE_404": "Omlouváme se, ale soubor se nepovedlo nalézt",
     "NO_ADMIN_AUTH": "",
-    "Term Of Service": "Podmínky použití",
     "ASYNC_DIR_W": "Do adresáře async se nedá zapisovat!",
     "BASE_ADDR_INFO": "",
     "DATA_DIR_EXPLAINATION": "Adresář s daty kde se nachází soubory a všechny relevantní informace. Doporučujeme tento adresář umístit mimo adresář s webovými stránkami, nebo alespoň omezit práva pro tento adresář. Nezapoměňte na poslední lomítko!",

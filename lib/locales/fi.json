@@ -74,7 +74,6 @@
     "NO_ADMIN": "Ylläpitotilaa ei otettu käyttöön.",
     "FILE_404": "Valitettavasti hakemaasi tiedostoa ei löytynyt",
     "NO_ADMIN_AUTH": "Sinulla ei ole oikeutta ylläpitoon.",
-    "Term Of Service": "Palveluehdot",
     "ASYNC_DIR_W": "Async hakemistoon ei ole kirjoitusoikeutta!",
     "BASE_ADDR_INFO": "Perusosoite on Jirafeau sivuston ensimmäinen osa, ennen ensimmäistä \"/\"-merkkiä. Esimerkiksi: \"http://www.example.com/\". Älä unohda viimeistä \"/\"-merkkiä!",
     "DATA_DIR_EXPLAINATION": "Tämä on hakemisto johon tiedostot ja tiedot niistä tallennetaan. Sinun kannattaa sijoittaa se verkkosivun ulkopuolelle tai ainakin estää pääsy sinne. Älä unohda \"/\"-merkkiä lopusta!",

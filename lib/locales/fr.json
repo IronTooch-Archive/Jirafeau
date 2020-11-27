@@ -78,7 +78,6 @@
     "NO_ADMIN": "Désolé, l'interface d'administration n'est pas activée.",
     "FILE_404": "Désolé, le fichier que vous demandez n'existe pas ou n'existe plus",
     "NO_ADMIN_AUTH": "Désolé, vous n'êtes pas authentifié sur l'interface d'administration.",
-    "Term Of Service": "Conditions d'utilisation",
     "ASYNC_DIR_W": "Le registre async n'est pas accessible en écriture.",
     "BASE_ADDR_INFO": "L'adresse d'origine de Jirafeau est la première partie de l'URL (barre oblique finale incluse). Par exemple : « http://www.exemple.com/ ». N'oubliez pas la barre oblique finale !",
     "DATA_DIR_EXPLAINATION": "Le dossier « data » est l'endroit où seront conservés les fichiers et leurs informations. Ce dossier ne devrait pas être situé au même endroit que votre site, ou au minimum avoir un accès restreint depuis le web. N'oubliez pas le slash de fin !",

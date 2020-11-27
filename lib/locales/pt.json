@@ -74,7 +74,6 @@
     "NO_ADMIN": "Desculpe, o interface de administração está desabilitado.",
     "FILE_404": "Desculpe, o ficheiro requisitado não foi encontrado",
     "NO_ADMIN_AUTH": "Desculpe, você não fez o logon na interface de administração.",
-    "Term Of Service": "Termo do Serviço",
     "ASYNC_DIR_W": "O diretório async não permite escrito.",
     "BASE_ADDR_INFO": "O endereço base do Jirafeau é a primeira parte do URL, até (e incluindo) a ultima barra. Por exemplo: \"http://www.exemplo.com/\".Não se esqueça da barra final!",
     "DATA_DIR_EXPLAINATION": "O directório de dados é onde os seus ficheiros e a informação sobre os ficheiros serão armazenados. Deverá coloca-lo fora do seu servidor web ou pelo menos restringir o acesso a este directório. Não esqueca a barra final!",

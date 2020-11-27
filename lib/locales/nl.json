@@ -74,7 +74,6 @@
     "NO_ADMIN": "Sorry, de beheerdersinterface is niet ingeschakeld.",
     "FILE_404": "Sorry, het opgevraagde bestand is niet gevonden",
     "NO_ADMIN_AUTH": "Sorry, je bent niet ingelogd op de beheerdersinterface.",
-    "Term Of Service": "Servicevoorwaarden",
     "ASYNC_DIR_W": "De async-map is niet schrijfbaar!",
     "BASE_ADDR_INFO": "De basis URL van Jirafeau is het eerst gedeelte van de URL, tot (maar inclusief) de laatste schuine streep. Bijvoorbeeld: \"http://www.voorbeeld.nl/\". Vergeet de afsluitende schuine streep niet!",
     "DATA_DIR_EXPLAINATION": "De datamap is waar de bestanden en informatie van deze bestanden worden opgeslagen. Plaats deze buiten de website, of beperk op zijn minst de toegang tot deze map. Vergeet de afsluitende schuine streep niet!",

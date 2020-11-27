@@ -74,7 +74,6 @@
     "NO_ADMIN": "Lo sentimos, el panel de administración no está habilitado.",
     "FILE_404": "Lo sentimos, no se ha encontrado el archivo solicitado",
     "NO_ADMIN_AUTH": "Lo siento, no estás autenticado en el panel de administración.",
-    "Term Of Service": "Términos del servicio",
     "ASYNC_DIR_W": "¡No se puede escribir en el directorio asíncrono!",
     "BASE_ADDR_INFO": "La dirección base de Jirafeau es la primera parte de la URL, hasta (e incluyendo) la última barra diagonal. Por ejemplo: \"http://www.example.com/\". ¡No olvide la barra diagonal de finalización!",
     "DATA_DIR_EXPLAINATION": "El directorio de datos es donde se almacenarán los archivos e información acerca de sus archivos, debe ponerlo fuera de su sitio web o, al menos, restringir el acceso a este directorio. ¡No olvide la barra diagonal!",

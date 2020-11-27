@@ -45,7 +45,6 @@
     "ACCESS_KO": "Brak dostępu",
     "NOW_DOWNLOADING": "Zamierzasz pobrać",
     "USING_SERVICE": "Używając usługi, akceptujesz nasze",
-    "Term Of Service": "Zasady Użytkowania",
     "AUTO_DESTRUCT": "Uwaga, ten plik sam się zniszczy po odczytaniu",
     "INTERNAL_ERROR_DEL": "Wewnętrzny błąd podczas tworzenia pliku.",
     "CONF_AUTOGEN_COMMENT": "Ten plik został wygenerowany przez proces instalacyjny. Możesz go modyfikować. Zajrzyj do pliku config.original.php aby uzyskać informacje o możliwych opcjach konfiguracji.",

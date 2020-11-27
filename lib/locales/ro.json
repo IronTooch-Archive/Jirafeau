@@ -74,7 +74,6 @@
     "NO_ADMIN": "Ne pare rău, interfaţa de administrare nu este activată.",
     "FILE_404": "Ne pare rău, fişierul solicitat nu a fost găsit",
     "NO_ADMIN_AUTH": "Ne pare rău, nu eşti autentificat pe interfaţa de administrare.",
-    "Term Of Service": "Termenii de utilizare a serviciului",
     "ASYNC_DIR_W": "Directorul async nu este scriptibil!",
     "BASE_ADDR_INFO": "Adresa de bază Jirafeau este prima parte a URL-ului, până la (incluzând) ultimul slash. De exemplu : \"http://www.example.com/\". Nu uita de slash-ul de la coadă!",
     "DATA_DIR_EXPLAINATION": "Directorul de date reţine fişierele şi datele despre fişiere.Ar trebui să-l ţii în afara website-ului, sau cel puţin să pui restricţii de acces pe acest director. Nu uita de slash-ul de la coadă!",

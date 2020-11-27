@@ -45,7 +45,6 @@
     "ACCESS_KO": "Pristup nije dozvoljen",
     "NOW_DOWNLOADING": "Preuzimanje će uskoro započeti",
     "USING_SERVICE": "Korištenjem naših usluga, prihvaćaju se naši",
-    "Term Of Service": "Uvjeti korištenja",
     "AUTO_DESTRUCT": "Upozorenje, ova će se datoteka samostalno uništiti nakon čitanja",
     "INTERNAL_ERROR_DEL": "Interna greška prilikom kreiranja datoteke.",
     "CONF_AUTOGEN_COMMENT": "Ova je datoteka generirana postupkom instalacije. Može se urediti. Za razumijevanje dijelova instalacije, pogledaj config.original.php.",

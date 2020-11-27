@@ -74,7 +74,6 @@
     "NO_ADMIN": "抱歉，管理界面未启用。",
     "FILE_404": "抱歉，请求的文件未找到",
     "NO_ADMIN_AUTH": "抱歉，您尚未登录管理界面。",
-    "Term Of Service": "服务条款",
     "ASYNC_DIR_W": "异步目录无法写入！",
     "BASE_ADDR_INFO": "",
     "DATA_DIR_EXPLAINATION": "",

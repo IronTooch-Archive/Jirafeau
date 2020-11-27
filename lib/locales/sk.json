@@ -74,7 +74,6 @@
     "NO_ADMIN": "Prepáčte, rozhranie pre správcu nie je povolené.",
     "FILE_404": "Prepáčte, požadovaný súbor nebol nájdený",
     "NO_ADMIN_AUTH": "Prepáčte, nie ste autorizovaná/ý použiť rozhranie pre správu.",
-    "Term Of Service": "Podmienky služby",
     "ASYNC_DIR_W": "Nie je možné zapisovať do adresára async!",
     "BASE_ADDR_INFO": "Základná adresa Jirafeau je prvá časť URL až po posledné lomítko (vrátane). Napr. \"http://www.example.org/\". Koncové lomítko je povinné!",
     "DATA_DIR_EXPLAINATION": "Adresár \"data\" obsahuje všetky uložené súbory a informácie o nich. Obsah adresára nesmie byť dostupný cez HTTP (uložte ho inam ako je koreňový adresár web servera, prípadne obmedzte prístup napr. pomocou .htaccess). Cesta musí končiť lomítkom!",
