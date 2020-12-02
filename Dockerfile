@@ -1,6 +1,10 @@
 FROM php:7.3-fpm-alpine
 MAINTAINER "Jérôme Jutteau <jerome@jutteau.fr>"
-ARG USER_UID=2009
+
+# lighttpd user
+ARG USER_UID=100
+# www-data group
+ARG GROUP_UID=82
 
 # install base
 RUN apk update && \
@@ -15,7 +19,7 @@ COPY .git .git
 RUN apk add git && \
     git reset --hard && rm -rf .git .gitignore .gitlab-ci.yml CONTRIBUTING.md Dockerfile README.md && \
     apk del git && \
-    chown -R $USER_UID /www && \
+    chown -R $USER_UID.$GROUP_UID /www && \
     chmod o=,ug=rwX -R /www && \
     chmod +x docker/cleanup
 
