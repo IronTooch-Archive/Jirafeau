@@ -94,10 +94,11 @@ Quick walktrough:
 * Compare the [»next-release« branch to »master«](https://gitlab.com/mojo42/Jirafeau/compare/master...next-release)
 * Add a list of noteworthy features and bugfixes to `CHANGELOG.md`
 * Add eventual upgrade procedure to `CHANGELOG.md`
+* Build and test docker image
 * Change the version, using [semantic versioning](http://semver.org/), in ```settings.php```
 * Merge »next-release« branch to »master«
-* Update the demo page
 * Tag the »master« with the new version
 * Push branch and tag
-* Build & push new docker image
+* Push new docker image
+* Update the demo page
 * Dance a little
