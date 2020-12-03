@@ -1,5 +1,5 @@
 # Select docker image from https://hub.docker.com/_/php/
-image: php:7.1
+image: php:7.3
 
 # Select what we should cache
 cache:
@@ -25,7 +25,23 @@ test_app_phpdefaultversion:
   script:
     - ./vendor/bin/parallel-lint --exclude vendor .
 
+job_lint_app_phpnextversion:
+  image: php:7.4
+  script:
+    - ./vendor/bin/parallel-lint --exclude vendor .
+  allow_failure: true
+
 # Run same tests with older supported versions
+test_app_php72:
+  image: php:7.2
+  script:
+    - ./vendor/bin/parallel-lint --exclude vendor .
+
+test_app_php71:
+  image: php:7.1
+  script:
+    - ./vendor/bin/parallel-lint --exclude vendor .
+
 test_app_php70:
   image: php:7.0
   script:
