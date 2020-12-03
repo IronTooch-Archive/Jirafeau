@@ -1,0 +1,6 @@
+{
+    "name": "mojo42/jirafeau",
+    "description": "Jirafeau: a simple way to upload a file",
+    "type": "project",
+    "license": "AGPL-3.0"
+}

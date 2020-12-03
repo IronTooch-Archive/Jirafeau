@@ -3,6 +3,7 @@ lib/tos.local.txt
 media/custom/
 var-*
 *._*
+composer.phar
 /vendor
 .idea/
 
