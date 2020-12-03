@@ -1,5 +1,10 @@
 # Jirafeau
 
+![Build Status](https://img.shields.io/gitlab/pipeline/mojo42/Jirafeau/master.svg)
+![Made With](https://img.shields.io/badge/made_with-php-blue.svg)
+![License](https://img.shields.io/badge/license-agpl--3.0-blue.svg)
+![Contribution](https://img.shields.io/badge/contributions_welcome-brightgreen.svg?labelColor=brightgreen)
+
 Welcome to the official Jirafeau project, an [Open-Source software](https://en.wikipedia.org/wiki/Open-source_software).
 
 Jirafeau is a "one-click-filesharing": Select your file, upload, share a link. That's it.
@@ -7,11 +12,6 @@ Jirafeau is a "one-click-filesharing": Select your file, upload, share a link. T
 See [jirafeau.net](https://jirafeau.net/) for a demo.
 
 ![Screenshot1](http://i.imgur.com/TPjh48P.png)
-
-Latest CI Status:
-Master [![Build Status Master](https://gitlab.com/mojo42/Jirafeau/badges/master/build.svg)](https://gitlab.com/mojo42/Jirafeau/commits/master)
-Next Release [![Build Status Next Release](https://gitlab.com/mojo42/Jirafeau/badges/test/build.svg)](https://gitlab.com/mojo42/Jirafeau/commits/master)
-[All Branch Builds](https://gitlab.com/mojo42/Jirafeau/pipelines?scope=branches)
 
 ## Main features
 
