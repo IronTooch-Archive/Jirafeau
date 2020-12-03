@@ -74,6 +74,10 @@ Installation steps:
 - B) Setup without the installation wizard (cli):
   - Just copy ```lib/config.original.php``` to ```lib/config.local.php``` and customize it
 
+💡 Hint: How to
+[install & configure Jirafeau](https://www.howtoforge.com/how-to-setup-a-file-sharing-website-with-jirafeau-on-debian-10/)
+on Debian 10 from scratch, with Nginx and PHP-FPM.
+
 ### Troubleshooting
 
 If you have some troubles, consider the following cases
