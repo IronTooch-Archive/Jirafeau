@@ -65,7 +65,7 @@ if (has_error()) {
 /* Upload file */
 if (isset($_FILES['file']) && is_writable(VAR_FILES)
     && is_writable(VAR_LINKS)) {
-    if (isset ($_POST['upload_password'])) {
+    if (isset($_POST['upload_password'])) {
         if (!jirafeau_challenge_upload($cfg, get_ip_address($cfg), $_POST['upload_password'])) {
             echo 'Error 3: Invalid password';
             exit;
@@ -127,11 +127,16 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
         exit;
     }
 
-    $res = jirafeau_upload($_FILES['file'],
-                           isset($_POST['one_time_download']),
-                           $key, $time, get_ip_address($cfg),
-                           $cfg['enable_crypt'], $cfg['link_name_length'],
-                           $cfg['file_hash']);
+    $res = jirafeau_upload(
+        $_FILES['file'],
+        isset($_POST['one_time_download']),
+        $key,
+        $time,
+        get_ip_address($cfg),
+        $cfg['enable_crypt'],
+        $cfg['link_name_length'],
+        $cfg['file_hash']
+    );
 
     if (empty($res) || $res['error']['has_error']) {
         echo 'Error 6 ' . $res['error']['why'];
@@ -384,7 +389,6 @@ elif [ "$1" == "delete" ]; then
     $curl $proxy "$2"
 fi
 <?php
-
     } else {
         echo 'Error 12';
         exit;
@@ -392,7 +396,7 @@ fi
 }
 /* Initialize an asynchronous upload. */
 elseif (isset($_GET['init_async'])) {
-    if (isset($_POST['upload_password'])){
+    if (isset($_POST['upload_password'])) {
         if (!jirafeau_challenge_upload($cfg, get_ip_address($cfg), $_POST['upload_password'])) {
             echo 'Error 20: Invalid password';
             exit;
@@ -457,12 +461,14 @@ elseif (isset($_GET['init_async'])) {
                 break;
         }
     }
-    echo jirafeau_async_init($_POST['filename'],
-                              $type,
-                              isset($_POST['one_time_download']),
-                              $key,
-                              $time,
-                              get_ip_address($cfg));
+    echo jirafeau_async_init(
+        $_POST['filename'],
+        $type,
+        isset($_POST['one_time_download']),
+        $key,
+        $time,
+        get_ip_address($cfg)
+    );
 }
 /* Continue an asynchronous upload. */
 elseif (isset($_GET['push_async'])) {
@@ -471,10 +477,12 @@ elseif (isset($_GET['push_async'])) {
         || (!isset($_POST['code']))) {
         echo 'Error 23';
     } else {
-        echo jirafeau_async_push($_POST['ref'],
-                                  $_FILES['data'],
-                                  $_POST['code'],
-                                  $cfg['maximal_upload_size']);
+        echo jirafeau_async_push(
+            $_POST['ref'],
+            $_FILES['data'],
+            $_POST['code'],
+            $cfg['maximal_upload_size']
+        );
     }
 }
 /* Finalize an asynchronous upload. */

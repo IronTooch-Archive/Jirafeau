@@ -167,7 +167,6 @@ if (!empty($link['key'])) {
                 echo '&amp;k=' . urlencode($crypt_key);
             } ?>';
             document.getElementById('submit_preview').submit ();"/><?php
-
         }
         echo '</td></tr></table></fieldset></form></div>';
         require(JIRAFEAU_ROOT.'lib/template/footer.php');
@@ -220,7 +219,6 @@ if (!$password_challenged && !$do_download && !$do_preview) {
                 echo '&amp;k=' . urlencode($crypt_key);
             } ?>';
         document.getElementById('submit_post').submit ();"/><?php
-
         }
     echo '</td></tr>';
     echo '</table></fieldset></form></div>';
@@ -253,7 +251,7 @@ if ($cfg['litespeed_workaround']) {
     }
 }
 /* Read encrypted file. */
-else if ($link['crypted']) {
+elseif ($link['crypted']) {
     /* Init module */
     $m = mcrypt_module_open('rijndael-256', '', 'ofb', '');
     /* Extract key and iv. */

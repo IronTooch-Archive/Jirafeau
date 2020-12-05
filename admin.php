@@ -43,40 +43,40 @@ if (php_sapi_name() == "cli") {
     }
 } else {
     /* Disable admin interface if we have a empty admin password. */
-  if (empty($cfg['admin_password']) && empty($cfg['admin_http_auth_user'])) {
-      require(JIRAFEAU_ROOT . 'lib/template/header.php');
-      echo '<div class="error"><p>'.
+    if (empty($cfg['admin_password']) && empty($cfg['admin_http_auth_user'])) {
+        require(JIRAFEAU_ROOT . 'lib/template/header.php');
+        echo '<div class="error"><p>'.
            t('NO_ADMIN') .
            '</p></div>';
-      require(JIRAFEAU_ROOT.'lib/template/footer.php');
-      exit;
-  }
+        require(JIRAFEAU_ROOT.'lib/template/footer.php');
+        exit;
+    }
 
-  /* Unlog if asked. */
-  if (jirafeau_admin_session_logged() && isset($_POST['action']) && (strcmp($_POST['action'], 'logout') == 0)) {
-      jirafeau_admin_session_end();
-  }
+    /* Unlog if asked. */
+    if (jirafeau_admin_session_logged() && isset($_POST['action']) && (strcmp($_POST['action'], 'logout') == 0)) {
+        jirafeau_admin_session_end();
+    }
 
-  if (!jirafeau_admin_session_logged()) {
-      /* Test HTTP authentification. */
-      if (!empty($cfg['admin_http_auth_user']) &&
+    if (!jirafeau_admin_session_logged()) {
+        /* Test HTTP authentification. */
+        if (!empty($cfg['admin_http_auth_user']) &&
           $cfg['admin_http_auth_user'] == $_SERVER['PHP_AUTH_USER']) {
-          jirafeau_admin_session_start();
-      }
-      /* Test web password authentification. */
-      else if (!empty($cfg['admin_password']) && isset($_POST['admin_password'])) {
-          if ($cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
-              jirafeau_admin_session_start();
-          } else {
-              require(JIRAFEAU_ROOT . 'lib/template/header.php');
-              echo '<div class="error"><p>'. t('BAD_PSW') . '</p></div>';
-              require(JIRAFEAU_ROOT.'lib/template/footer.php');
-              exit;
-          }
-      }
-      /* Admin password prompt form. */
-      else {
-          require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?>
+            jirafeau_admin_session_start();
+        }
+        /* Test web password authentification. */
+        elseif (!empty($cfg['admin_password']) && isset($_POST['admin_password'])) {
+            if ($cfg['admin_password'] === hash('sha256', $_POST['admin_password'])) {
+                jirafeau_admin_session_start();
+            } else {
+                require(JIRAFEAU_ROOT . 'lib/template/header.php');
+                echo '<div class="error"><p>'. t('BAD_PSW') . '</p></div>';
+                require(JIRAFEAU_ROOT.'lib/template/footer.php');
+                exit;
+            }
+        }
+        /* Admin password prompt form. */
+        else {
+            require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?>
           <form method="post" class="form login">
           <fieldset>
               <table>
@@ -102,18 +102,18 @@ if (php_sapi_name() == "cli") {
           </form>
           <?php
           require(JIRAFEAU_ROOT.'lib/template/footer.php');
-          exit;
-      }
-  }
+            exit;
+        }
+    }
 
-  /* Operations may take a long time.
-   * Be sure PHP's safe mode is off.
-   */
-  @set_time_limit(0);
+    /* Operations may take a long time.
+     * Be sure PHP's safe mode is off.
+     */
+    @set_time_limit(0);
 
-  /* Show admin interface if not downloading a file. */
-  if (!(isset($_POST['action']) && strcmp($_POST['action'], 'download') == 0)) {
-      require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?><h2><?php echo t('ADMIN_INTERFACE'); ?></h2><?php
+    /* Show admin interface if not downloading a file. */
+    if (!(isset($_POST['action']) && strcmp($_POST['action'], 'download') == 0)) {
+        require(JIRAFEAU_ROOT . 'lib/template/header.php'); ?><h2><?php echo t('ADMIN_INTERFACE'); ?></h2><?php
           ?><h2>(version <?php echo JIRAFEAU_VERSION ?>)</h2><?php
 
           ?><div id = "admin">
@@ -223,64 +223,64 @@ if (php_sapi_name() == "cli") {
               <input type = "submit" value = "<?php echo t('LOGOUT'); ?>" />
           </form>
           </fieldset></div><?php
-  }
+    }
 
-  /* Check for actions */
-  if (isset($_POST['action'])) {
-      if (strcmp($_POST['action'], 'clean') == 0) {
-          $total = jirafeau_admin_clean();
-          echo '<div class="message">' . NL;
-          echo '<p>';
-          echo t('CLEANED_FILES_CNT') . ' : ' . $total;
-          echo '</p></div>';
-      } elseif (strcmp($_POST['action'], 'clean_async') == 0) {
-          $total = jirafeau_admin_clean_async();
-          echo '<div class="message">' . NL;
-          echo '<p>';
-          echo t('CLEANED_FILES_CNT') . ' : ' . $total;
-          echo '</p></div>';
-      } elseif (strcmp($_POST['action'], 'size') == 0) {
-          $size = jirafeau_dir_size($cfg['var_root']);
-          $human_size = jirafeau_human_size($size);
-          echo '<div class="message">' . NL;
-          echo '<p>' . t('SIZE_DATA') . ': ' . $human_size .'</p>';
-          echo '</div>';
-      } elseif (strcmp($_POST['action'], 'list') == 0) {
-          jirafeau_admin_list("", "", "");
-      } elseif (strcmp($_POST['action'], 'search_by_name') == 0) {
-          jirafeau_admin_list($_POST['name'], "", "");
-      } elseif (strcmp($_POST['action'], 'search_by_file_hash') == 0) {
-          jirafeau_admin_list("", $_POST['hash'], "");
-      } elseif (strcmp($_POST['action'], 'search_link') == 0) {
-          jirafeau_admin_list("", "", $_POST['link']);
-      } elseif (strcmp($_POST['action'], 'delete_link') == 0) {
-          jirafeau_delete_link($_POST['link']);
-          echo '<div class="message">' . NL;
-          echo '<p>' . t('LINK_DELETED') . '</p></div>';
-      } elseif (strcmp($_POST['action'], 'delete_file') == 0) {
-          $count = jirafeau_delete_file($_POST['hash']);
-          echo '<div class="message">' . NL;
-          echo '<p>' . t('DELETED_LINKS') . ' : ' . $count . '</p></div>';
-      } elseif (strcmp($_POST['action'], 'download') == 0) {
-          $l = jirafeau_get_link($_POST['link']);
-          if (!count($l)) {
-              return;
-          }
-          $p = s2p($l['hash']);
-          header('Content-Length: ' . $l['file_size']);
-          header('Content-Type: ' . $l['mime_type']);
-          header('Content-Disposition: attachment; filename="' .
+    /* Check for actions */
+    if (isset($_POST['action'])) {
+        if (strcmp($_POST['action'], 'clean') == 0) {
+            $total = jirafeau_admin_clean();
+            echo '<div class="message">' . NL;
+            echo '<p>';
+            echo t('CLEANED_FILES_CNT') . ' : ' . $total;
+            echo '</p></div>';
+        } elseif (strcmp($_POST['action'], 'clean_async') == 0) {
+            $total = jirafeau_admin_clean_async();
+            echo '<div class="message">' . NL;
+            echo '<p>';
+            echo t('CLEANED_FILES_CNT') . ' : ' . $total;
+            echo '</p></div>';
+        } elseif (strcmp($_POST['action'], 'size') == 0) {
+            $size = jirafeau_dir_size($cfg['var_root']);
+            $human_size = jirafeau_human_size($size);
+            echo '<div class="message">' . NL;
+            echo '<p>' . t('SIZE_DATA') . ': ' . $human_size .'</p>';
+            echo '</div>';
+        } elseif (strcmp($_POST['action'], 'list') == 0) {
+            jirafeau_admin_list("", "", "");
+        } elseif (strcmp($_POST['action'], 'search_by_name') == 0) {
+            jirafeau_admin_list($_POST['name'], "", "");
+        } elseif (strcmp($_POST['action'], 'search_by_file_hash') == 0) {
+            jirafeau_admin_list("", $_POST['hash'], "");
+        } elseif (strcmp($_POST['action'], 'search_link') == 0) {
+            jirafeau_admin_list("", "", $_POST['link']);
+        } elseif (strcmp($_POST['action'], 'delete_link') == 0) {
+            jirafeau_delete_link($_POST['link']);
+            echo '<div class="message">' . NL;
+            echo '<p>' . t('LINK_DELETED') . '</p></div>';
+        } elseif (strcmp($_POST['action'], 'delete_file') == 0) {
+            $count = jirafeau_delete_file($_POST['hash']);
+            echo '<div class="message">' . NL;
+            echo '<p>' . t('DELETED_LINKS') . ' : ' . $count . '</p></div>';
+        } elseif (strcmp($_POST['action'], 'download') == 0) {
+            $l = jirafeau_get_link($_POST['link']);
+            if (!count($l)) {
+                return;
+            }
+            $p = s2p($l['hash']);
+            header('Content-Length: ' . $l['file_size']);
+            header('Content-Type: ' . $l['mime_type']);
+            header('Content-Disposition: attachment; filename="' .
                   $l['file_name'] . '"');
-          if (file_exists(VAR_FILES . $p . $l['hash'])) {
-              $r = fopen(VAR_FILES . $p . $l['hash'], 'r');
-              while (!feof($r)) {
-                  print fread($r, 1024);
-              }
-              fclose($r);
-          }
-          exit;
-      }
-  }
+            if (file_exists(VAR_FILES . $p . $l['hash'])) {
+                $r = fopen(VAR_FILES . $p . $l['hash'], 'r');
+                while (!feof($r)) {
+                    print fread($r, 1024);
+                }
+                fclose($r);
+            }
+            exit;
+        }
+    }
 
     require(JIRAFEAU_ROOT.'lib/template/footer.php');
 }

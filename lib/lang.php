@@ -40,13 +40,15 @@ function t($string_id)
     return "FIX ME";
 }
 
-function t_visitor_langs() {
+function t_visitor_langs()
+{
     $visitor_langs = t_parse_accept_language();
     array_push($visitor_langs, "en");
     return $visitor_langs;
 }
 
-function t_parse_accept_language() {
+function t_parse_accept_language()
+{
     if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
         return [];
     }
@@ -63,7 +65,8 @@ function t_parse_accept_language() {
     return $langs;
 }
 
-function t_in($string_id, $lang) {
+function t_in($string_id, $lang)
+{
     $trans = t_get_json($lang);
     if ($trans === false) {
         return false;
@@ -74,7 +77,8 @@ function t_in($string_id, $lang) {
     return $trans[$string_id];
 }
 
-function t_get_raw_json($lang) {
+function t_get_raw_json($lang)
+{
     $filename = str_replace("-", "_", $lang);
     if (preg_match('/[^A-Za-z_\w]/', $filename)) {
         return false;
@@ -90,7 +94,8 @@ function t_get_raw_json($lang) {
     return $json;
 }
 
-function t_get_json($lang) {
+function t_get_json($lang)
+{
     $raw_j = t_get_raw_json($lang);
     $array = json_decode($raw_j, true);
     if ($array === null) {
@@ -99,14 +104,15 @@ function t_get_json($lang) {
     return $array;
 }
 
-function json_lang_generator($lang) {
+function json_lang_generator($lang)
+{
     $r = false;
     if ($lang === null) {
         $lang_config = $GLOBALS['cfg']['lang'];
         if ($lang_config != "auto") {
             $r = t_get_raw_json($lang_config);
         } else {
-            foreach(t_visitor_langs() as $lang) {
+            foreach (t_visitor_langs() as $lang) {
                 $r = t_get_raw_json($lang);
                 if (!($r === false)) {
                     break;

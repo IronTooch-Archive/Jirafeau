@@ -92,8 +92,7 @@ elseif (true === jirafeau_challenge_upload_ip($cfg, get_ip_address($cfg))) {
             exit;
         }
     }
-}
-else {
+} else {
     jirafeau_fatal_error(t('ACCESS_KO'), $cfg);
 }
 
@@ -169,9 +168,9 @@ else {
         <input type="file" id="file_select" size="30"
     onchange="control_selected_file_size(<?php echo $cfg['maximal_upload_size'] ?>, '<?php
         if ($cfg['maximal_upload_size'] >= 1024) {
-          echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . number_format($cfg['maximal_upload_size']/1024, 2) . " GB.";
-        } else if ($cfg['maximal_upload_size'] > 0) { 
-          echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . $cfg['maximal_upload_size'] . " MB.";
+            echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . number_format($cfg['maximal_upload_size']/1024, 2) . " GB.";
+        } elseif ($cfg['maximal_upload_size'] > 0) {
+            echo t('2_BIG') . ', ' . t('FILE_LIM') . " " . $cfg['maximal_upload_size'] . " MB.";
         }
     ?>')"/>
     </p>
@@ -241,11 +240,11 @@ else {
         if ($cfg['maximal_upload_size'] >= 1024) {
             echo '<p class="config">' . t('FILE_LIM');
             echo " " . number_format($cfg['maximal_upload_size'] / 1024, 2) . " GB.</p>";
-        } else if ($cfg['maximal_upload_size'] > 0) {
+        } elseif ($cfg['maximal_upload_size'] > 0) {
             echo '<p class="config">' . t('FILE_LIM');
             echo " " . $cfg['maximal_upload_size'] . " MB.</p>";
         } else {
-           echo '<p class="config"></p>';
+            echo '<p class="config"></p>';
         }
         ?>
 
@@ -256,12 +255,10 @@ else {
         ?>
     <input type="hidden" id="upload_password" name="upload_password" value="<?php echo $_SESSION['user_upload_password'] ?>"/>
     <?php
-
     } else {
         ?>
     <input type="hidden" id="upload_password" name="upload_password" value=""/>
     <?php
-
     }
     ?>
     <input type="submit" id="send" value="<?php echo t('SEND'); ?>"
@@ -283,7 +280,6 @@ else {
         <input type = "submit" value = "<?php echo t('LOGOUT'); ?>" />
     </form>
     <?php
-
     }
     ?>
 

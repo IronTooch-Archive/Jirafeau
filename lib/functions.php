@@ -192,12 +192,16 @@ function jirafeau_ini_to_bytes($value)
     switch (strtoupper($modifier)) {
     case 'P':
         $bytes *= 1024;
+        // no break
     case 'T':
         $bytes *= 1024;
+        // no break
     case 'G':
         $bytes *= 1024;
+        // no break
     case 'M':
         $bytes *= 1024;
+        // no break
     case 'K':
         $bytes *= 1024;
     }
@@ -210,8 +214,10 @@ function jirafeau_ini_to_bytes($value)
  */
 function jirafeau_get_max_upload_size_bytes()
 {
-    return min(jirafeau_ini_to_bytes(ini_get('post_max_size')),
-               jirafeau_ini_to_bytes(ini_get('upload_max_filesize')));
+    return min(
+        jirafeau_ini_to_bytes(ini_get('post_max_size')),
+        jirafeau_ini_to_bytes(ini_get('upload_max_filesize'))
+    );
 }
 
 /**
@@ -459,10 +465,12 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
     /* create link file */
     $link_tmp_name =  VAR_LINKS . $hash . rand(0, 10000) . '.tmp';
     $handle = fopen($link_tmp_name, 'w');
-    fwrite($handle,
-            $name . NL. $mime_type . NL. $size . NL. $password . NL. $time .
+    fwrite(
+        $handle,
+        $name . NL. $mime_type . NL. $size . NL. $password . NL. $time .
             NL . $hash. NL . ($one_time_download ? 'O' : 'R') . NL . time() .
-            NL . $ip . NL. $delete_link_code . NL . ($crypted ? 'C' : 'O'));
+            NL . $ip . NL. $delete_link_code . NL . ($crypted ? 'C' : 'O')
+    );
     fclose($handle);
     $hash_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
     $l = s2p("$hash_link");
@@ -866,11 +874,13 @@ function jirafeau_async_init($filename, $type, $one_time, $key, $time, $ip)
     /* Store informations. */
     $p .= $ref;
     $handle = fopen($p, 'w');
-    fwrite($handle,
-            str_replace(NL, '', trim($filename)) . NL .
+    fwrite(
+        $handle,
+        str_replace(NL, '', trim($filename)) . NL .
             str_replace(NL, '', trim($type)) . NL . $password . NL .
             $time . NL . ($one_time ? 'O' : 'R') . NL . $ip . NL .
-            time() . NL . $code . NL);
+            time() . NL . $code . NL
+    );
     fclose($handle);
 
     return $ref . NL . $code ;
@@ -928,10 +938,12 @@ function jirafeau_async_push($ref, $data, $code, $max_file_size)
     /* Update async file. */
     $code = jirafeau_gen_random(4);
     $handle = fopen(VAR_ASYNC . $p . $ref, 'w');
-    fwrite($handle,
-            $a['file_name'] . NL. $a['mime_type'] . NL. $a['key'] . NL .
+    fwrite(
+        $handle,
+        $a['file_name'] . NL. $a['mime_type'] . NL. $a['key'] . NL .
             $a['time'] . NL . $a['onetime'] . NL . $a['ip'] . NL .
-            time() . NL . $code . NL);
+            time() . NL . $code . NL
+    );
     fclose($handle);
     return $code;
 }
@@ -995,10 +1007,12 @@ function jirafeau_async_end($ref, $code, $crypt, $link_name_length, $file_hash_m
     /* Create link. */
     $link_tmp_name =  VAR_LINKS . $hash . rand(0, 10000) . '.tmp';
     $handle = fopen($link_tmp_name, 'w');
-    fwrite($handle,
-            $a['file_name'] . NL . $a['mime_type'] . NL . $size . NL .
+    fwrite(
+        $handle,
+        $a['file_name'] . NL . $a['mime_type'] . NL . $size . NL .
             $a['key'] . NL . $a['time'] . NL . $hash . NL . $a['onetime'] . NL .
-            time() . NL . $a['ip'] . NL . $delete_link_code . NL . ($crypted ? 'C' : 'O'));
+            time() . NL . $a['ip'] . NL . $delete_link_code . NL . ($crypted ? 'C' : 'O')
+    );
     fclose($handle);
     $hash_link = substr(base_16_to_64(md5_file($link_tmp_name)), 0, $link_name_length);
     $l = s2p("$hash_link");
@@ -1152,7 +1166,8 @@ function jirafeau_challenge_ip($allowedIpList, $challengedIp)
  * Check if Jirafeau has a restriction on the IP address for uploading.
  * @return true if uploading is IP restricted, false otherwise.
  */
-function jirafeau_upload_has_ip_restriction($cfg) {
+function jirafeau_upload_has_ip_restriction($cfg)
+{
     return count($cfg['upload_ip']) > 0;
 }
 
@@ -1190,7 +1205,7 @@ function jirafeau_challenge_upload_ip_without_password($cfg, $challengedIp)
  * @param $password password to be challenged
  * @return true if access is valid, false otherwise.
  */
-function jirafeau_challenge_upload ($cfg, $ip, $password)
+function jirafeau_challenge_upload($cfg, $ip, $password)
 {
     return jirafeau_challenge_upload_ip_without_password($cfg, $ip) ||
             (!jirafeau_has_upload_password($cfg) && !jirafeau_upload_has_ip_restriction($cfg)) ||

@@ -157,7 +157,7 @@ $cfg['proxy_ip'] = array();
  * By default, files are hashed through md5 but other methods are available.
  *
  * Possible values are 'md5', 'md5_outside' and 'random'.
- * 
+ *
  * With 'md5' option, the whole file is hashed through md5. This is the default.
  * With 'md5_outside', hash is computed using:
  *  - md5 of the first part of the file,

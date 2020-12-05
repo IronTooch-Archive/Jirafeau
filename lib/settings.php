@@ -30,12 +30,9 @@ if (file_exists(JIRAFEAU_ROOT . 'lib/config.local.php')) {
 }
 
 // Setup debug mode
-if ($cfg['debug'] === true)
-{
+if ($cfg['debug'] === true) {
     @error_reporting(E_ALL);
-}
-else
-{
+} else {
     @error_reporting(0);
 }
 
@@ -78,4 +75,4 @@ define('JIRAFEAU_QUARTER', 7776000); // JIRAFEAU_DAY * 90
 define('JIRAFEAU_YEAR', 31536000); // JIRAFEAU_DAY * 365
 
 // set UTC as default timezone for all date/time functions
-date_default_timezone_set ('UTC');
+date_default_timezone_set('UTC');
