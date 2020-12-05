@@ -32,8 +32,6 @@ if (!isset($_GET['h']) || empty($_GET['h'])) {
  * Be sure PHP's safe mode is off.
  */
 @set_time_limit(0);
-/* Remove errors. */
-@error_reporting(0);
 
 $link_name = $_GET['h'];
 

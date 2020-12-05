@@ -110,8 +110,6 @@ if (php_sapi_name() == "cli") {
    * Be sure PHP's safe mode is off.
    */
   @set_time_limit(0);
-  /* Remove errors. */
-  @error_reporting(0);
 
   /* Show admin interface if not downloading a file. */
   if (!(isset($_POST['action']) && strcmp($_POST['action'], 'download') == 0)) {

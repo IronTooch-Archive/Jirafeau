@@ -32,8 +32,6 @@ require(JIRAFEAU_ROOT . 'lib/lang.php');
  * Be sure PHP's safe mode is off.
  */
 @set_time_limit(0);
-/* Remove errors. */
-@error_reporting(0);
 
 if ($_SERVER['REQUEST_METHOD'] == "GET" && count($_GET) == 0) {
     require(JIRAFEAU_ROOT . 'lib/template/header.php');

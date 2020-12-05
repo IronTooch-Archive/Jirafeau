@@ -30,11 +30,15 @@ if (file_exists(JIRAFEAU_ROOT . 'lib/config.local.php')) {
 }
 
 // Setup debug mode
-error_reporting(0);
 if ($cfg['debug'] === true)
 {
-    error_reporting(E_ALL);
+    @error_reporting(E_ALL);
 }
+else
+{
+    @error_reporting(0);
+}
+
 
 // Set constants
 
