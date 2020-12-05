@@ -219,6 +219,19 @@ if (php_sapi_name() == "cli") {
               </td>
           </tr>
           </form>
+          <form method="post">
+          <tr>
+              <input type = "hidden" name = "action" value = "bug_report_info"/>
+              <?php echo jirafeau_admin_csrf_field() ?>
+              <td class = "info">
+                  <?php echo t('REPORTING_AN_ISSUE'); ?>
+              </td>
+              <td></td>
+              <td>
+                  <input type = "submit" value = "<?php echo t('INFO'); ?>" />
+              </td>
+          </tr>
+          </form>
           </table>
           <form method="post">
               <input type = "hidden" name = "action" value = "logout" />
@@ -282,6 +295,8 @@ if (php_sapi_name() == "cli") {
                 fclose($r);
             }
             exit;
+        } elseif (strcmp($_POST['action'], 'bug_report_info') == 0) {
+            echo jirafeau_admin_bug_report($cfg);
         }
     }
 

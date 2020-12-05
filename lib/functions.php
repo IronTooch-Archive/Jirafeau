@@ -788,6 +788,95 @@ function jirafeau_admin_clean_async()
     }
     return $count;
 }
+
+/**
+ * Better strval function for debug purposes
+ */
+function jirafeau_strval($value)
+{
+    if (gettype($value) == "boolean") {
+        return $value ? 'true' : 'false';
+    }
+    return strval($value);
+}
+
+/**
+ * Show file/folder permissions
+ */
+function jirafeau_fileperms($path)
+{
+    $out = substr(sprintf("%o", @fileperms($path)), -4) . ", ";
+    $out .= "read " . (is_readable($path) ? "OK" : "KO") . ", ";
+    $out .= "write " . (is_writable($path) ? "OK" : "KO");
+    return $out;
+}
+
+/**
+ * Show some useful informations for bug reporting.
+ */
+function jirafeau_admin_bug_report($cfg)
+{
+    $out = "<fieldset><legend>" . t('REPORTING_AN_ISSUE') . "</legend>";
+    $out .= "If you have a problem related to Jirafeau, please <a href='https://gitlab.com/mojo42/Jirafeau/-/issues'>open an issue</a>, explain your problem in english and copy-paste the following content:<br/><br/><code>";
+
+    $out .= "# Jirafeau<br/>";
+    $out .= "- version: " . JIRAFEAU_VERSION . "<br/>";
+    $jirafeau_options = [
+        'debug',
+        'file_hash',
+        'litespeed_workaround',
+        'store_uploader_ip',
+        'installation_done',
+        'enable_crypt',
+        'preview',
+        'maximal_upload_size',
+        'store_uploader_ip'
+    ];
+    foreach ($jirafeau_options as &$o) {
+        $v = $cfg[$o];
+        $out .= "- $o: " . jirafeau_strval($v) . " (" . gettype($v) . ")<br/>";
+    }
+    $out .= "<br/>";
+
+    $out .= "# PHP options<br/>";
+    $out .= "- php version: " . phpversion() . "<br/>";
+    $out .= "- mcrypt version: " . phpversion('mcrypt') . "<br/>";
+    $php_options =  [
+        'post_max_size',
+        'upload_max_filesize'
+    ];
+    foreach ($php_options as &$o) {
+        $v = ini_get($o);
+        $out .= "- $o: " . jirafeau_strval($v) . " (" . gettype($v). ")<br/>";
+    }
+    $out .= "<br/>";
+
+    $out .= "# File permissions<br/>";
+    $out .= "- 'var' folder permissions: " . jirafeau_fileperms($cfg['var_root']) . "<br/>";
+    $out .= "- 'file' folder permissions: " . jirafeau_fileperms(VAR_FILES) . "<br/>";
+    $out .= "- 'links' folder permissions: " . jirafeau_fileperms(VAR_LINKS) . "<br/>";
+    $out .= "- 'async' folder permissions: " . jirafeau_fileperms(VAR_ASYNC) . "<br/>";
+    $out .= "<br/>";
+
+    $out .= "# Server details<br/>";
+    $out .= "- server software: " . $_SERVER["SERVER_SOFTWARE"] . "<br/>";
+    $out .= "<br/>";
+
+    $out .= "# OS details<br/>";
+    $out .= "- OS: " . php_uname() . "<br/>";
+    $out .= "<br/>";
+
+    $out .= "# Browser details<br/>";
+    $out .= "<script type='text/javascript' lang='Javascript'>
+        // @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+        document.write('- HTML5 support: ' + (check_html5_file_api() ? 'yes' : 'no') + '<br/>');
+        document.write('- User agent: ' + navigator.userAgent + '<br/>');
+        // @license-end
+        </script>";
+    $out .= "</code></fieldset>";
+    return $out;
+}
+
 /**
  * Read async transfert informations
  * @return array containing informations.

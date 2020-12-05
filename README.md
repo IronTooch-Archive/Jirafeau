@@ -210,6 +210,8 @@ Hint: To create a custom theme just copy the »courgette« folder and name your 
 ### I found a bug, what should I do?
 
 Feel free to open a bug in the [GitLab's issues](https://gitlab.com/mojo42/Jirafeau/issues).
+If you can, please copy-paste informations related to bug opening provided in admin interface.
+Admin interface can be reached by accessing `/admin.php`.
 
 ### How to set maximum file size?
 
