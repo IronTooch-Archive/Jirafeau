@@ -494,7 +494,16 @@ function async_upload_push (code)
             {
                 var res = req.responseText;
 
-                if (/^Error/.test(res))
+                // This error may be triggered when Jirafeau does not receive any file in POST.
+                // This may be due to bad php configuration where post_max_size is too low
+                // comparing to upload_max_filesize. Let's retry with lower file size.
+                if (res === "Error 23")
+                {
+                    async_global_max_size = Math.max(1, async_global_max_size - 500);
+                    async_upload_push (async_global_last_code);
+                    return;
+                }
+                else if (/^Error/.test(res))
                 {
                     pop_failure (res);
                     return;
@@ -504,15 +513,17 @@ function async_upload_push (code)
                 var code = res[0]
                 async_global_transfered = async_global_transfering;
                 async_upload_push (code);
+                return;
             }
             else
             {
                 if (req.status == 413) // Request Entity Too Large
                 {
                     // lower async_global_max_size and retry
-                    async_global_max_size = parseInt (async_global_max_size * 0.8);
+                    async_global_max_size = Math.max(1, parseInt (async_global_max_size * 0.8));
                 }
                 async_upload_push (async_global_last_code);
+                return;
             }
         }
     }
