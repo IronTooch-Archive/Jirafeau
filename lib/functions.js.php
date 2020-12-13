@@ -273,12 +273,18 @@ function control_selected_file_size(max_size, error_str)
     }
 }
 
+function XHRErrorHandler(e)
+{
+    var text = "${e.type}: ${e.loaded} bytes transferred"
+    console.log(text)
+}
+
 function pop_failure (e)
 {
-    var text = "An error occured";
+    var text = "<p>An error occured";
     if (typeof e !== 'undefined')
-        text = e;
-    text = "<p>" + text + "</p>";
+        text += ": " + e;
+    text += "</p>";
     document.getElementById('error_pop').innerHTML = e;
 
     document.getElementById('uploading').style.display = 'none';
@@ -339,8 +345,8 @@ function classic_upload (file, time, password, one_time, upload_password)
 
     var req = new XMLHttpRequest ();
     req.upload.addEventListener ("progress", upload_progress, false);
-    req.addEventListener ("error", pop_failure, false);
-    req.addEventListener ("abort", pop_failure, false);
+    req.addEventListener ("error", XHRErrorHandler, false);
+    req.addEventListener ("abort", XHRErrorHandler, false);
     req.onreadystatechange = function ()
     {
         if (req.readyState == 4 && req.status == 200)
@@ -412,8 +418,8 @@ function async_upload_start (max_size, file, time, password, one_time, upload_pa
     async_global_time = time;
 
     var req = new XMLHttpRequest ();
-    req.addEventListener ("error", pop_failure, false);
-    req.addEventListener ("abort", pop_failure, false);
+    req.addEventListener ("error", XHRErrorHandler, false);
+    req.addEventListener ("abort", XHRErrorHandler, false);
     req.onreadystatechange = function ()
     {
         if (req.readyState == 4 && req.status == 200)
@@ -484,8 +490,8 @@ function async_upload_push (code)
     }
     var req = new XMLHttpRequest ();
     req.upload.addEventListener ("progress", async_upload_progress, false);
-    req.addEventListener ("error", pop_failure, false);
-    req.addEventListener ("abort", pop_failure, false);
+    req.addEventListener ("error", XHRErrorHandler, false);
+    req.addEventListener ("abort", XHRErrorHandler, false);
     req.onreadystatechange = function ()
     {
         if (req.readyState == 4)
@@ -546,8 +552,8 @@ function async_upload_push (code)
 function async_upload_end (code)
 {
     var req = new XMLHttpRequest ();
-    req.addEventListener ("error", pop_failure, false);
-    req.addEventListener ("abort", pop_failure, false);
+    req.addEventListener ("error", XHRErrorHandler, false);
+    req.addEventListener ("abort", XHRErrorHandler, false);
     req.onreadystatechange = function ()
     {
         if (req.readyState == 4 && req.status == 200)
