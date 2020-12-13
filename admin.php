@@ -32,6 +32,9 @@ if (file_exists(JIRAFEAU_ROOT . 'install.php')
 
 /* If called from CLI, no password or graphical interface */
 if (php_sapi_name() == "cli") {
+    if ($cfg['installation_done'] == false) {
+        die("installation not completed yet\n");
+    }
     if ((count($argv)>1) && $argv[1]=="clean_expired") {
         $total = jirafeau_admin_clean();
         echo "$total expired files deleted.";
