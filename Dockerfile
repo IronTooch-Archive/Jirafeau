@@ -12,17 +12,20 @@ RUN apk update && \
     echo "UTC" > /etc/timezone
 
 
-# install jirafou
+# install jirafeau
 RUN mkdir /www
 WORKDIR /www
 COPY .git .git
 RUN apk add git && \
-    git reset --hard && rm -rf .git .gitignore .gitlab-ci.yml CONTRIBUTING.md Dockerfile README.md && \
+    git reset --hard && rm -rf docker .git .gitignore .gitlab-ci.yml CONTRIBUTING.md Dockerfile README.md && \
     apk del git && \
     chown -R $USER_UID.$GROUP_UID /www && \
-    chmod o=,ug=rwX -R /www && \
-    chmod +x docker/cleanup
+    chmod o=,ug=rwX -R /www
 
+COPY docker/cleanup.sh /cleanup.sh
+RUN chmod o=,ug=rx /cleanup.sh
+COPY docker/run.sh /run.sh
+RUN chmod o=,ug=rx /run.sh
 
 # install lighttpd
 RUN apk add lighttpd php7-mcrypt && \
@@ -38,5 +41,5 @@ COPY docker/lighttpd.conf /etc/lighttpd/lighttpd.conf
 RUN rm -rf /var/cache/apk/*
 
 
-CMD /www/docker/cleanup & php-fpm -D && lighttpd -D -f /etc/lighttpd/lighttpd.conf
+CMD /run.sh
 EXPOSE 80
