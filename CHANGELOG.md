@@ -10,6 +10,14 @@
 5. Follow the installation wizard, it should propose you the same data folder or even update automatically
 6. Check your ```/lib/config.local.php``` and compare it with the ```/lib/config.original.php``` to see if new configuration items are available
 
+# version 4.3.0
+
+- Fix various docker errors
+- Fix various upload errors
+- Add composer (useful for CI)
+- Code cleanin
+- Upgrade from 4.2.0: in-place upgrade
+
 # version 4.2.0
 
 - New file_hash option to eventually speed-up file identification process
