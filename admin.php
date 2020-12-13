@@ -33,16 +33,16 @@ if (file_exists(JIRAFEAU_ROOT . 'install.php')
 /* If called from CLI, no password or graphical interface */
 if (php_sapi_name() == "cli") {
     if ($cfg['installation_done'] == false) {
-        die("installation not completed yet\n");
+        die("Installation not completed yet.\n");
     }
     if ((count($argv)>1) && $argv[1]=="clean_expired") {
         $total = jirafeau_admin_clean();
-        echo "$total expired files deleted.";
+        echo "$total expired files deleted.\n";
     } elseif ((count($argv)>1) && $argv[1]=="clean_async") {
         $total = jirafeau_admin_clean_async();
-        echo "$total old unfinished transfers deleted.";
+        echo "$total old unfinished transfers deleted.\n";
     } else {
-        die("No command found. Should be admin.php <clean_expired|clean_async>.");
+        die("No command found. Should be admin.php <clean_expired|clean_async>.\n");
     }
 } else {
     /* Disable admin interface if we have a empty admin password. */
