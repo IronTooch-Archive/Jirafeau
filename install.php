@@ -26,15 +26,6 @@ require(JIRAFEAU_ROOT . 'lib/settings.php');
 require(JIRAFEAU_ROOT . 'lib/functions.php');
 require(JIRAFEAU_ROOT . 'lib/lang.php');
 
-/**
- * Prepend used functions
- **/
-
-function jirafeau_quoted($str)
-{
-    return QUOTE . str_replace(QUOTE, "\'", $str) . QUOTE;
-}
-
 function jirafeau_export_cfg($cfg)
 {
     $content = '<?php' . NL;
