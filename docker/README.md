@@ -40,6 +40,14 @@ docker run -d -p 8080:8080 mojo42/jirafeau
 docker run -d -p 80:8080 mojo42/jirafeau
 ```
 
+## Options
+
+Jirafeau docker image now accept some options through environment variables to ease its configuration.
+More details about options in `lib/config.original.php`.
+
+Available options:
+- `FILE_HASH`: can be set to `md5` (default), `partial_md5` or `random`.
+
 ## Few notes
 
 - SSL is currently not enabled in docker's image for the moment
