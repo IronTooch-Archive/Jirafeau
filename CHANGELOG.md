@@ -15,7 +15,8 @@
 - Fix various docker errors
 - Fix various upload errors
 - Add composer (useful for CI)
-- Code cleanin
+- Code cleaning
+- Add option 'store_uploader_ip' to avoid uploaders ip logging
 - Upgrade from 4.2.0: in-place upgrade
 
 # version 4.2.0
