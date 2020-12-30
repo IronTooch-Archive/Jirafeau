@@ -41,7 +41,7 @@ if ($cfg['debug'] === true) {
 
 /* Jirafeau package */
 define('JIRAFEAU_PACKAGE', 'Jirafeau');
-define('JIRAFEAU_VERSION', '4.2.0');
+define('JIRAFEAU_VERSION', '4.3.0');
 
 /* Directories. */
 define('VAR_FILES', $cfg['var_root'] . 'files/');
