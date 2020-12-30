@@ -680,7 +680,9 @@ function jirafeau_admin_list($name, $file_hash, $link_hash)
                 echo t('EXPIRE') . ': ' . ($l['time'] == -1 ? '∞' : jirafeau_get_datetimefield($l['time'])) . '<br/>';
                 echo t('ONETIME') . ': ' . ($l['onetime'] == 'O' ? 'Yes' : 'No') . '<br/>';
                 echo t('UPLOAD_DATE') . ': ' . jirafeau_get_datetimefield($l['upload_date']) . '<br/>';
-                echo t('ORIGIN') . ': ' . $l['ip'] . '<br/>';
+                if (strlen($l['ip']) > 0) {
+                    echo t('ORIGIN') . ': ' . $l['ip'] . '<br/>';
+                }
                 echo '</td><td>';
                 echo '<form method="post">' .
                 '<input type = "hidden" name = "action" value = "download"/>' .

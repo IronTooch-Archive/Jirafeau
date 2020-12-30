@@ -181,6 +181,11 @@ $cfg['file_hash'] = 'md5';
  */
 $cfg['litespeed_workaround'] = false;
 
+/* Store uploader's IP along with 'link' file.
+ * Depending of your legislation, you may have to adjust this parameter.
+ */
+$cfg['store_uploader_ip'] = true;
+
 /* Required flag to test if the installation is already installed
  * or needs to start the installation script
  */

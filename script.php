@@ -127,12 +127,18 @@ if (isset($_FILES['file']) && is_writable(VAR_FILES)
         exit;
     }
 
+    if ($cfg['store_uploader_ip']) {
+        $ip = get_ip_address($cfg);
+    } else {
+        $ip = "";
+    }
+    
     $res = jirafeau_upload(
         $_FILES['file'],
         isset($_POST['one_time_download']),
         $key,
         $time,
-        get_ip_address($cfg),
+        $ip,
         $cfg['enable_crypt'],
         $cfg['link_name_length'],
         $cfg['file_hash']
@@ -461,13 +467,20 @@ elseif (isset($_GET['init_async'])) {
                 break;
         }
     }
+
+    if ($cfg['store_uploader_ip']) {
+        $ip = get_ip_address($cfg);
+    } else {
+        $ip = "";
+    }
+    
     echo jirafeau_async_init(
         $_POST['filename'],
         $type,
         isset($_POST['one_time_download']),
         $key,
         $time,
-        get_ip_address($cfg)
+        $ip
     );
 }
 /* Continue an asynchronous upload. */
