@@ -1517,3 +1517,8 @@ function jirafeau_add_ending_slash($path)
 {
     return $path . ((substr($path, -1) == '/') ? '' : '/');
 }
+
+function jirafeau_default_web_root()
+{
+    return $_SERVER['HTTP_HOST'] . str_replace(basename(__FILE__), '', $_SERVER['REQUEST_URI']);
+}

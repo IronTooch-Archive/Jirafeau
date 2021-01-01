@@ -8,6 +8,7 @@ docker run -d -p 8080:80 mojo42/jirafeau:latest
 ```
 
 Then connect on [locahost:8080](http://localhost:8080/).
+The admin console is located on `/admin.php`, check console output to get auto-generated admin password.
 
 # Build your own Jirafeau docker image
 
@@ -19,11 +20,9 @@ docker build -t your/jirafeau:latest .
 
 # Security
 
-Jirafeau is run without privilidges with user id 2009. To make it able to open privilidged ports you can pass the capability, just stay with 8080 and use a reverse proxy or map the port 80:8080.
+You may be interested to run Jirafeau on port 80:
 ```
 docker run -d -p 80:80 --sysctl net.ipv4.ip_unprivileged_port_start=80 mojo42/jirafeau
-docker run -d -p 8080:80 mojo42/jirafeau
-docker run -d -p 80:80 mojo42/jirafeau
 ```
 
 Note that Jirafeau image does not provide any SSL/TLS. You may be interrested in using [docker compose](https://docs.docker.com/compose/) combined with [Let's Encrypt](https://letsencrypt.org/).
@@ -34,6 +33,9 @@ Jirafeau docker image accept some options through environment variables to ease 
 More details about options in `lib/config.original.php`.
 
 Available options:
+- `ADMIN_PASSWORD`: setup a specific admin password. If not set, a random password will be generated.
+- `WEB_ROOT`: setup a specific domain to point at when generating links (e.g. 'jirafeau.mydomain.com/').
+- `VAR_ROOT`: setup a specific path where to place files. default: '/data'.
 - `FILE_HASH`: can be set to `md5` (default), `partial_md5` or `random`.
 
 ## Few notes

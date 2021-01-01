@@ -148,12 +148,7 @@ case 2:
     ?></label></td>
         <td class = "field"><input type = "text" name = "web_root"
         id = "input_web_root" value = "<?php
-        echo(empty($cfg['web_root']) ?
-          $_SERVER['HTTP_HOST'] . str_replace(
-              basename(__FILE__),
-              '',
-              $_SERVER['REQUEST_URI']
-          ) : $cfg['web_root']);
+           echo(empty($cfg['web_root']) ? jirafeau_default_web_root() : $cfg['web_root']);
       ?>" size = "40" /></td>
         </tr> <tr> <td class = "info" colspan = "2"><?php
         echo t('DATA_DIR_EXPLAINATION');
