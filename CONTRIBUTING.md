@@ -91,7 +91,6 @@ Quick walktrough:
 ## New Releases
 
 * If the release is not done for security purposes: create a new issue and freeze next-release branch for at least week.
-* Make sure to run `php-cs-fixer fix --rules=@PSR2 .` and commit.
 * Compare the [»next-release« branch to »master«](https://gitlab.com/mojo42/Jirafeau/compare/master...next-release)
 * Add a list of noteworthy features and bugfixes to `CHANGELOG.md`
 * Add eventual upgrade procedure to `CHANGELOG.md`
