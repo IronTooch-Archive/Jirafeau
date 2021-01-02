@@ -37,6 +37,21 @@ Available options:
 - `WEB_ROOT`: setup a specific domain to point at when generating links (e.g. 'jirafeau.mydomain.com/').
 - `VAR_ROOT`: setup a specific path where to place files. default: '/data'.
 - `FILE_HASH`: can be set to `md5` (default), `partial_md5` or `random`.
+- `PREVIEW`: set to 1 or 0 to enable or disable preview.
+- `TITLE`: set Jirafeau instance title.
+- `ORGANISATION`: set organisation (in ToS).
+- `CONTACTPERSON`: set contact person (in ToS).
+- `STYLE`: apply a specific style.
+- `AVAILABILITY_DEFAULT`: setup which availability shows by default.
+- `ONE_TIME_DOWNLOAD`: set to 1 or 0 to enable or disable one time downloads.
+- `ENABLE_CRYPT`: set to 1 or 0 to enable or disable server side encryption.
+- `DEBUG`: set to 1 or 0 to enable or disable debug mode.
+- `MAXIMAL_UPLOAD_SIZE`: maximal file size allowed (expressed in MB).
+- `UPLOAD_PASSWORD`: set one or more passwords to access Jirafeau (separated by comma).
+- `UPLOAD_IP`: set one or more ip allowed to upload files (separated by comma).
+- `UPLOAD_IP_NO_PASSWORD`: set one or more ip allowed to upload files without password (separated by comma).
+- `PROXY_IP`: set one or more proxy ip (separated by comma).
+- `STORE_UPLOADER_IP`: set to 1 or 0 to enable or disable keeping sender's IP with the _link_ file.
 
 ## Few notes
 
