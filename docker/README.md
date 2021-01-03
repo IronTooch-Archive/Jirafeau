@@ -4,7 +4,7 @@ Jirafeau is a small PHP application so running it inside a docker is pretty stra
 
 ```
 docker pull mojo42/jirafeau:latest
-docker run -d -p 8080:80 mojo42/jirafeau:latest
+docker run -it --rm -p 8080:80 mojo42/jirafeau:latest
 ```
 
 Then connect on [locahost:8080](http://localhost:8080/).
@@ -52,6 +52,22 @@ Available options:
 - `UPLOAD_IP_NO_PASSWORD`: set one or more ip allowed to upload files without password (separated by comma).
 - `PROXY_IP`: set one or more proxy ip (separated by comma).
 - `STORE_UPLOADER_IP`: set to 1 or 0 to enable or disable keeping sender's IP with the _link_ file.
+
+Example:
+```
+docker run -it -p 8080:80 --rm -e ADMIN_PASSWORD='p4ssw0rd' -e WEB_ROOT='jirafeau.mydomain.com/' -e UPLOAD_PASSWORD='foo,bar' -e PREVIEW=0  mojo42/jirafeau:latest
+```
+
+# Data Storage
+
+Files and links are stored in `/data` by default. Sub folders are automatically created with needed permissions at creation if needed.
+Note that configuration is not stored in /data.
+
+Example of using a dedicated volume to store Jirafeau data separatly from containter:
+```
+docker volume create jirafeau_data
+docker run -it --rm -p 8080:80 --mount source=jirafeau_data,target=/data mojo42/jirafeau:latest
+```
 
 ## Few notes
 
