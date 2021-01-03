@@ -843,12 +843,16 @@ function jirafeau_admin_bug_report($cfg)
     $out .= "- mcrypt version: " . phpversion('mcrypt') . "<br/>";
     $php_options =  [
         'post_max_size',
-        'upload_max_filesize'
+        'upload_max_filesize',
+        'safe_mode',
+        'max_execution_time',
+        'max_input_time'
     ];
     foreach ($php_options as &$o) {
         $v = ini_get($o);
         $out .= "- $o: " . jirafeau_strval($v) . " (" . gettype($v). ")<br/>";
     }
+    $out .= "- can set_time_limit: " . (set_time_limit(0) ? "yes" : "no") . "<br/>";
     $out .= "<br/>";
 
     $out .= "# File permissions<br/>";
@@ -869,10 +873,15 @@ function jirafeau_admin_bug_report($cfg)
     $out .= "# Browser details<br/>";
     $out .= "<script type='text/javascript' lang='Javascript'>
         // @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
-        document.write('- HTML5 support: ' + (check_html5_file_api() ? 'yes' : 'no') + '<br/>');
-        document.write('- User agent: ' + navigator.userAgent + '<br/>');
+        document.write('- html5 support: ' + (check_html5_file_api() ? 'yes' : 'no') + '<br/>');
+        document.write('- user agent: ' + navigator.userAgent + '<br/>');
         // @license-end
         </script>";
+    $out .= "<br/>";
+
+    $out .= "# Memory<br/>";
+    $out .= "- memory_get_peak_usage: " . jirafeau_human_size(memory_get_peak_usage()) . "<br/>";
+
     $out .= "</code></fieldset>";
     return $out;
 }
