@@ -383,7 +383,7 @@ if [ "$1" == "send" ]; then
         echo "    ${0} get ${url}${apipage}?h=$code [PASSWORD}"
     fi
     echo "Delete via API:"
-    echo "    ${0} delete ${url}${downloadpage}?h=$code&d=$del_code"
+    echo "    ${0} delete \"${url}${downloadpage}?h=$code&d=$del_code\""
 
 elif [ "$1" == "get" ]; then
     if [ -z "$password" ]; then
@@ -392,7 +392,7 @@ elif [ "$1" == "get" ]; then
         $curl $proxy -OJ -X POST -F key=$password "$2"
     fi
 elif [ "$1" == "delete" ]; then
-    $curl $proxy "$2"
+    $curl $proxy "$2" --data-raw "do_delete=1%2F" | grep "div class" |sed -e "s/<[^>]\+>//g"
 fi
 <?php
     } else {
