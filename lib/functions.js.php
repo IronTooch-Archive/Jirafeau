@@ -183,10 +183,10 @@ function show_link (reference, delete_code, crypt_key, date)
 
         // Test if content can be previewed
          type = document.getElementById('file_select').files[0].type;
-         if (type.indexOf("image") > -1 ||
-             type.indexOf("audio") > -1 ||
-             type.indexOf("text") > -1 ||
-             type.indexOf("video") > -1)
+         if (type.startsWith('image/') ||
+                type.startsWith('audio') ||
+                type.startsWith('text/plain') ||
+                type.startsWith('video/'))
          {
             document.getElementById('preview_link').href = preview_link_href;
             document.getElementById('preview_link_text').innerHTML = web_root + preview_link_href;

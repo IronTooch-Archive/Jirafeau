@@ -509,10 +509,15 @@ function jirafeau_upload($file, $one_time_download, $key, $time, $ip, $crypt, $l
 function jirafeau_is_viewable($mime)
 {
     if (!empty($mime)) {
-        /* Actually, verify if mime-type is an image or a text. */
-        $viewable = array('image', 'text', 'video', 'audio');
+        $viewable = array('image', 'video', 'audio');
         $decomposed = explode('/', $mime);
-        return in_array($decomposed[0], $viewable);
+        if (in_array($decomposed[0], $viewable)) {
+            return true;
+        }
+        $viewable = array('text/plain');
+        if (in_array($mime, $viewable)) {
+            return true;
+        }
     }
     return false;
 }
