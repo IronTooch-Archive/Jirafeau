@@ -75,7 +75,7 @@ elseif (true === jirafeau_challenge_upload_ip($cfg, get_ip_address($cfg))) {
                 </tr><tr>
                     <td class = "field"><input type = "password"
                     name = "upload_password" id = "upload_password"
-                    size = "40" />
+                    size = "40" autocomplete = "current-password" />
                     </td>
                 </tr>
                 <tr class = "nav">
@@ -185,7 +185,7 @@ elseif (true === jirafeau_challenge_upload_ip($cfg, get_ip_address($cfg))) {
         ?>
         <tr>
         <td><label for="input_key"><?php echo t('PSW') . ':'; ?></label></td>
-        <td><input type="password" name="key" id="input_key" /></td>
+        <td><input type="password" name="key" id="input_key" autocomplete = "new-password"/></td>
         </tr>
         <tr>
         <td><label for="select_time"><?php echo t('TIME_LIM') . ':'; ?></label></td>

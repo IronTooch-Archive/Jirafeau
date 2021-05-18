@@ -91,7 +91,7 @@ if (php_sapi_name() == "cli") {
               <tr>
                   <td class = "field"><input type = "password"
                   name = "admin_password" id = "admin_password"
-                  size = "40" />
+                  size = "40" autocomplete = "current-password" />
                   </td>
               </tr>
               <tr class = "nav">

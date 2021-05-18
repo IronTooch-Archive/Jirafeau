@@ -142,7 +142,7 @@ if (!empty($link['key'])) {
              '<legend>' . t('PSW_PROTEC') .
              '</legend><table><tr><td>' .
              t('GIMME_PSW') . ' : ' .
-             '<input type = "password" name = "key" />' .
+             '<input type = "password" name = "key" autocomplete = "current-password"/>' .
              '</td></tr>' .
              '<tr><td>' .
              t('USING_SERVICE'). ' <a href="tos.php" target="_blank" rel="noopener noreferrer">' . t('TOS') . '</a>.' .

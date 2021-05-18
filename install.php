@@ -120,7 +120,7 @@ default:
        ><?php echo t('ADMIN_PSW') . ':';
     ?></label></td>
         <td class = "field"><input type = "password" name = "admin_password"
-        id = "admin_password" size = "40" /></td>
+        id = "admin_password" size = "40" autocomplete = "new-password"/></td>
         </tr>
         <tr class = "nav">
         <td></td>
